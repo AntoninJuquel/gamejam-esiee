@@ -1,0 +1,3 @@
+[submodule "Assets/ScreenNavigation"]
+	path = Assets/ScreenNavigation
+	url = https://github.com/AntoninJuquel/ScreenNavigation
