@@ -14,8 +14,8 @@ public class TransferEvent : MonoBehaviour, IGameEvent
     {
         if(this.buildingA.getNbHab() == this.nbPeopleTransfer)
         {
-        this.buildingB.addHab(this.nbPeopleTransfer);
-        this.buildingA.removeHab(this.nbPeopleTransfer);
+            this.buildingB.addHab(this.nbPeopleTransfer);
+            this.buildingA.removeHab(this.nbPeopleTransfer);
         }
         else { throw new InvalidOperationException("Le bâtiment ne contient pas le nombre d'habitant que vous souhaitez tranférer"); }
     }
