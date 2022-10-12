@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    double conso;
+    public double conso;
+    public int nbHab;
+    public double mortalityRate;
+    public double unhappyRate;
+    
     bool isConsumming;
-    int nbHab;
-    double mortalityRate;
-    double unhappyRate;
 
     //Les getters
     public double getConso() 
