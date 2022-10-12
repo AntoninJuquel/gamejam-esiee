@@ -1,3 +1,6 @@
 [submodule "Assets/ScreenNavigation"]
 	path = Assets/ScreenNavigation
 	url = https://github.com/AntoninJuquel/ScreenNavigation
+[submodule "Assets/MessagingSystem"]
+	path = Assets/MessagingSystem
+	url = https://github.com/AntoninJuquel/MessagingSystem
