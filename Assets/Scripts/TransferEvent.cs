@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class TransferEvent : MonoBehaviour, IGameEvent
 {
-   public Building buildingA;
-   public Building buildingB;
-   public int nbPeopleTransfer;
 
-   //Méthode qui transfère nbPeopleTransfer du bâtiment A au bâtiment B
-   public void action()
+    [System.Serializable] Building buildingA;
+    [System.Serializable] Building buildingB;
+    [System.Serializable] int nbPeopleTransfer;
+
+    //Méthode qui transfère nbPeopleTransfer du bâtiment A au bâtiment B
+    public void action()
     {
         if(this.buildingA.getNbHab() == this.nbPeopleTransfer)
         {

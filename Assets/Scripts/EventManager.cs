@@ -27,7 +27,7 @@ public class EventManager : MonoBehaviour
 
     private int currentEventIndex = 0;
     private double timer = 0;
-    public List<TimedEvent> timelines = new List<TimedEvent>();
+    [System.Serializable] private List<TimedEvent> timelines = new List<TimedEvent>();
 /*
     public void addEvent(double time, IGameEvent gameEvent)
     {

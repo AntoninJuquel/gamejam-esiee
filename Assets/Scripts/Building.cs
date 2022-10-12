@@ -4,39 +4,39 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    public double conso;
-    public int nbHab;
-    public double mortalityRate;
-    public double unhappyRate;
+    [System.Serializable] int peopleCount;
+    [System.Serializable] double consumption;
+    [System.Serializable] double mortalityRate;
+    [System.Serializable] double unhappyRate;
     
     bool isConsumming;
 
     //Les getters
-    public double getConso() 
+    public double getActiveConsumption()
     {
-        if (isConsumming)
-        {
-            return this.conso;
-        }
-        return 0;
+        return (isConsumming) ? this.consumption : 0;
+    }
+    public double getConsumption()
+    {
+        return this.consumption;
     }
     public bool getIsConsumming() { return this.isConsumming; }
-    public int getNbHab() { return this.nbHab; }
+    public int getPeopleCount() { return this.peopleCount; }
     public double getMortalityRate() { return this.mortalityRate; }
     public double getUnhappyRate() { return this.unhappyRate; }
 
     //Les setters
-    public void setConso(double c) { this.conso = c; }
+    public void setConso(double c) { this.consumption = c; }
     public void setIsConsumming(bool a) { this.isConsumming = a; }
-    public void setNbHab(int p) { this.nbHab = p; }
+    public void setNbHab(int p) { this.peopleCount = p; }
     public void setMortalityRate(double m) { this.mortalityRate = m; }
     public void setUnhappyRate(double u) { this.unhappyRate = u; }
 
     //Méthode qui ajoute des personnes
-    public void addHab(int h) { this.nbHab += h; }    
+    public void addPeople(int h) { this.peopleCount += h; }    
 
     //Méthode qui retire des personnes
-    public void removeHab(int h) { this.nbHab -= h; }
+    public void subPeople(int h) { this.peopleCount -= h; }
 
 
     // Start is called before the first frame update

@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class City : MonoBehaviour 
 {
-    int nbPeople;
-    double battery;
-    List<Building> building = new List<Building>() ;
+    [System.Serializable] double timer;
+    [System.Serializable] double startingBatteryLevel;
+    [System.Serializable] List<Building> building = new List<Building>() ;
+    
+    double batteryCount;
     int nbDead;
-    double chrono;
     int nbLeave;
 
     //Les getters
     public double getBattery() { return this.battery; }
     public List<Building> getBuilding() { return this.building; }
     public int getNbDead() { return this.nbDead; }
-    public double getChrono() { return this.chrono; }
+    public double getChrono() { return this.timer; }
     public int getNbLeave() { return this.nbLeave; }
 
     //Les setters
     public void setBattery(double b) { this.battery = b; }
     public void setBuilding(List<Building> b) { this.building = b; }
     public void setNbDead(int n) { this.nbDead = n; }
-    public void setChrono(double c) { this.chrono = c; }
+    public void setChrono(double c) { this.timer = c; }
     public void setNbLeave(int n) { this.nbLeave = n; }
 
     //Méthode qui ajoute des morts 
@@ -43,7 +44,7 @@ public class City : MonoBehaviour
     }
 
     //Fonction qui retourne la consommation total des bâtiments
-    public double getConsoCity()
+    public double getCityConsumption()
     {
         double somme = 0;
         for(int i = 0; i < this.building.Count; i++)
@@ -64,6 +65,7 @@ public class City : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        batteryCount -= getCityConsumption();
     }
 }
