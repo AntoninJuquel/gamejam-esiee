@@ -9,7 +9,6 @@ public class AddEvent : MonoBehaviour, IGameEvent
 
     public void action()
     {
-        this.building.addHab(this.nbPeopleToAdd);
+        this.building.addPeople(this.nbPeopleToAdd);
     }
-    
 }
