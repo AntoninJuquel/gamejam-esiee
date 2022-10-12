@@ -6,29 +6,36 @@ public class Building : MonoBehaviour
 {
     double conso;
     bool isConsumming;
-    int nbPeople;
+    int nbHab;
     double mortalityRate;
     double unhappyRate;
 
     //Les getters
-    public double getConso() { return conso; }
-    public bool getIsConsumming() { return isConsumming; }
-    public int getNbPeople() { return nbPeople; }
-    public double getMortalityRate() { return mortalityRate; }
-    public double getUnhappyRate() { return unhappyRate; }
+    public double getConso() 
+    {
+        if (isConsumming)
+        {
+            return this.conso;
+        }
+        return 0;
+    }
+    public bool getIsConsumming() { return this.isConsumming; }
+    public int getNbHab() { return this.nbHab; }
+    public double getMortalityRate() { return this.mortalityRate; }
+    public double getUnhappyRate() { return this.unhappyRate; }
 
     //Les setters
     public void setConso(double c) { this.conso = c; }
     public void setIsConsumming(bool a) { this.isConsumming = a; }
-    public void setNbPeople(int p) { this.nbPeople = p; }
+    public void setNbHab(int p) { this.nbHab = p; }
     public void setMortalityRate(double m) { this.mortalityRate = m; }
     public void setUnhappyRate(double u) { this.unhappyRate = u; }
 
     //Méthode qui ajoute des personnes
-    public void add(int people) { this.nbPeople += people; }    
+    public void addHab(int h) { this.nbHab += h; }    
 
     //Méthode qui retire des personnes
-    public void remove(int people) { this.nbPeople -= people; }
+    public void removeHab(int h) { this.nbHab -= h; }
 
 
     // Start is called before the first frame update
