@@ -12,7 +12,7 @@ public class TransferEvent : MonoBehaviour, IGameEvent
     //M�thode qui transf�re nbPeopleTransfer du b�timent A au b�timent B
     public void action()
     {
-        var buildingAPeopleCount = buildingA.getPeopleCount()
+        var buildingAPeopleCount = buildingA.getPeopleCount();
         var transferablePeopleCount = (peopleToTransfer > buildingAPeopleCount) ? buildingAPeopleCount : peopleToTransfer;
         buildingB.addPeople(transferablePeopleCount);
         buildingA.subPeople(transferablePeopleCount);
