@@ -437,28 +437,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4614864725403938071, guid: 514e6b09fb71f814181ad7ae64e52458,
         type: 3}
-      propertyPath: outlineMode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4614864725403938071, guid: 514e6b09fb71f814181ad7ae64e52458,
-        type: 3}
-      propertyPath: outlineWidth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4614864725403938071, guid: 514e6b09fb71f814181ad7ae64e52458,
-        type: 3}
-      propertyPath: precomputeOutline
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4614864725403938071, guid: 514e6b09fb71f814181ad7ae64e52458,
-        type: 3}
       propertyPath: bakeKeys.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4614864725403938071, guid: 514e6b09fb71f814181ad7ae64e52458,
         type: 3}
       propertyPath: bakeValues.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4614864725403938071, guid: 514e6b09fb71f814181ad7ae64e52458,
         type: 3}
@@ -15980,28 +15965,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3916153414850778997, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
         type: 3}
-      propertyPath: outlineMode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3916153414850778997, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
-        type: 3}
-      propertyPath: outlineWidth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3916153414850778997, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
-        type: 3}
-      propertyPath: precomputeOutline
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3916153414850778997, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
-        type: 3}
       propertyPath: bakeKeys.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3916153414850778997, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
         type: 3}
       propertyPath: bakeValues.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3916153414850778997, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
         type: 3}
@@ -34498,9 +34468,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventManager: {fileID: 1814306373}
-  isGameWin:
-    m_PersistentCalls:
-      m_Calls: []
   timer: 30
   startingBatteryLevel: 50
   batteryLevelRef:
@@ -34894,28 +34861,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8830866305658330484, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
         type: 3}
-      propertyPath: outlineMode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830866305658330484, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
-        type: 3}
-      propertyPath: outlineWidth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830866305658330484, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
-        type: 3}
-      propertyPath: precomputeOutline
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830866305658330484, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
-        type: 3}
       propertyPath: bakeKeys.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8830866305658330484, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
         type: 3}
       propertyPath: bakeValues.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8830866305658330484, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
         type: 3}

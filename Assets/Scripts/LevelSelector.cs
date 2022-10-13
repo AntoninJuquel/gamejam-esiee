@@ -7,6 +7,7 @@ public class LevelSelector : MonoBehaviour
     [SerializeField] private float[] pauseTimers;
     [SerializeField] private BuildingSelector _buildingSelector;
     [SerializeField] private StackNavigator _navigator;
+    [SerializeField] private GameObject exotronLogo;
     private int _currentLevelIndex;
     private City _currentCity;
 
@@ -39,11 +40,13 @@ public class LevelSelector : MonoBehaviour
     private void PauseGameBeforeDialog()
     {
         _currentCity.isPause = true;
+        exotronLogo.SetActive(true);
     }
 
     private void UnPauseAfterDialog()
     {
         _currentCity.isPause = false;
+        exotronLogo.SetActive(false);
     }
 
     private void OnGameWin(bool win)
@@ -90,5 +93,13 @@ public class LevelSelector : MonoBehaviour
         AudioManager.Instance.Stop("dialog");
         _navigator.Navigate("Menu");
         SceneManager.LoadScene(0);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GoToMenu();
+        }
     }
 }

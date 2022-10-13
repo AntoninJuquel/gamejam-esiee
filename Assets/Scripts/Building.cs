@@ -10,7 +10,8 @@ public class Building : MonoBehaviour
     [SerializeField] double consumption;
     [SerializeField] double mortalityRate;
     [SerializeField] double unhappyRate;
-    public event Action<int, bool> OnUpdate; 
+    [SerializeField] private GameObject[] windows;
+    public event Action<int, bool> OnUpdate;
     public double mortalityCount { get; set; } = 0;
     public double unhappyCount { get; set; } = 0;
 
@@ -65,7 +66,10 @@ public class Building : MonoBehaviour
             _windowMat.EnableKeyword("_EMISSION");
         else
             _windowMat.DisableKeyword("_EMISSION");
-        
+        foreach (var window in windows)
+        {
+            window.SetActive(a);
+        }
         OnUpdate?.Invoke(peopleCount, isConsumming);
     }
 
@@ -101,7 +105,7 @@ public class Building : MonoBehaviour
     private void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
-        _windowMat = Instantiate(_meshRenderer.sharedMaterials[windowIndex]);
+        _windowMat = Instantiate(Resources.Load<Material>("window"));
         var materials = _meshRenderer.sharedMaterials.ToList();
         materials[windowIndex] = _windowMat;
         _meshRenderer.materials = materials.ToArray();
