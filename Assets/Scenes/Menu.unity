@@ -806,7 +806,7 @@ RectTransform:
   - {fileID: 1362955274}
   - {fileID: 1558352843}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1115,7 +1115,7 @@ RectTransform:
   m_Children:
   - {fileID: 565502665}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3173,6 +3173,111 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788612533}
   m_CullTransparentMesh: 1
+--- !u!1 &1833885495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833885496}
+  - component: {fileID: 1833885497}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1833885496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833885495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1833885497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833885495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd687093679da240ab82156fa2f2112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: angry
+    clips:
+    - {fileID: 8300000, guid: 4be6fa246e9e7d14abc5c9e399676250, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: empty
+    clips:
+    - {fileID: 8300000, guid: da10247c8132f074886c823ef1719276, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: home
+    clips:
+    - {fileID: 8300000, guid: 71745caffb095b6419549a5867bef93d, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: hospital
+    clips:
+    - {fileID: 8300000, guid: 770ab4836bb5a31429234c0315df1425, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: office
+    clips:
+    - {fileID: 8300000, guid: df43041fc50beb54bbb001930b71795d, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: restaurant
+    clips:
+    - {fileID: 8300000, guid: 89290b0ea546aed408e7096b17961b99, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
 --- !u!1 &1904426212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,7 +3945,7 @@ RectTransform:
   - {fileID: 1277185913}
   - {fileID: 1488519802}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

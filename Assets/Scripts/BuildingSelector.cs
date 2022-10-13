@@ -9,6 +9,7 @@ public class BuildingSelector : MonoBehaviour
     [SerializeField] private GameObject panel;
     private Camera _mainCam;
     private Building _currentBuilding;
+    private string _lastSound = "";
 
     private void Awake()
     {
@@ -33,16 +34,20 @@ public class BuildingSelector : MonoBehaviour
         if (_currentBuilding)
         {
             _currentBuilding.GetComponent<Outline>().enabled = false;
-            _currentBuilding.OnPeopleUpdate -= UpdatePeople;
+            _currentBuilding.OnUpdate -= OnUpdate;
         }
+
+        var isConsuming = building.getIsConsumming();
+        var peopleCount = building.getPeopleCount();
 
         panel.SetActive(true);
         _currentBuilding = building;
         _currentBuilding.GetComponent<Outline>().enabled = true;
-        _currentBuilding.OnPeopleUpdate += UpdatePeople;
+        _currentBuilding.OnUpdate += OnUpdate;
         consumptionRef.Value = building.getConsumption();
-        peopleRef.Value = building.getPeopleCount();
-        consumingRef.Value = building.getIsConsumming();
+        peopleRef.Value = peopleCount;
+        consumingRef.Value = isConsuming;
+        OnUpdate(peopleCount, isConsuming);
     }
 
     public void ToggleLight(bool on)
@@ -52,13 +57,40 @@ public class BuildingSelector : MonoBehaviour
         consumingRef.Value = on;
     }
 
-    private void UpdatePeople(int ppl)
+    private void OnUpdate(int ppl, bool consuming)
     {
         peopleRef.Value = ppl;
+        consumingRef.Value = consuming;
+
+        var newSound = "";
+
+        if (consuming)
+        {
+            newSound = ppl == 0 ? "empty" : _currentBuilding.name;
+        }
+        else if (ppl > 0)
+        {
+            newSound = "angry";
+        }
+        else if (_lastSound != "")
+        {
+            AudioManager.Instance.Stop(_lastSound);
+            _lastSound = "";
+            return;
+        }
+
+        if (newSound != _lastSound)
+        {
+            if (_lastSound != "")
+                AudioManager.Instance.Stop(_lastSound);
+            _lastSound = newSound;
+            AudioManager.Instance.Play(_lastSound);
+        }
     }
 
     private void OnDisable()
     {
-        _currentBuilding.OnPeopleUpdate -= UpdatePeople;
+        if (_currentBuilding)
+            _currentBuilding.OnUpdate -= OnUpdate;
     }
 }

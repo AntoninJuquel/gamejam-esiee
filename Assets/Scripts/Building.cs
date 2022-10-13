@@ -10,7 +10,7 @@ public class Building : MonoBehaviour
     [SerializeField] double consumption;
     [SerializeField] double mortalityRate;
     [SerializeField] double unhappyRate;
-    public event Action<int> OnPeopleUpdate; 
+    public event Action<int, bool> OnUpdate; 
     public double mortalityCount { get; set; } = 0;
     public double unhappyCount { get; set; } = 0;
 
@@ -65,6 +65,8 @@ public class Building : MonoBehaviour
             _windowMat.EnableKeyword("_EMISSION");
         else
             _windowMat.DisableKeyword("_EMISSION");
+        
+        OnUpdate?.Invoke(peopleCount, isConsumming);
     }
 
     public void setNbHab(int p)
@@ -86,14 +88,14 @@ public class Building : MonoBehaviour
     public void addPeople(int h)
     {
         this.peopleCount += h;
-        OnPeopleUpdate?.Invoke(peopleCount);
+        OnUpdate?.Invoke(peopleCount, isConsumming);
     }
 
     //M�thode qui retire des personnes
     public void subPeople(int h)
     {
         peopleCount -= (peopleCount > h) ? h : peopleCount;
-        OnPeopleUpdate?.Invoke(peopleCount);
+        OnUpdate?.Invoke(peopleCount, isConsumming);
     }
 
     private void Awake()
@@ -110,10 +112,5 @@ public class Building : MonoBehaviour
     {
         mortalityCount = 0;
         unhappyCount = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8830866305658330484}
   - component: {fileID: 7888390784078282358}
   m_Layer: 0
-  m_Name: exotron_office
+  m_Name: office
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
