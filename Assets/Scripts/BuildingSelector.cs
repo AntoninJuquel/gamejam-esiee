@@ -30,6 +30,7 @@ public class BuildingSelector : MonoBehaviour
 
     private void SelectBuilding(Building building)
     {
+        if (!building) return;
         if (_currentBuilding)
             _currentBuilding.GetComponent<Outline>().enabled = false;
 
