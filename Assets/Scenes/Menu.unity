@@ -729,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &337544718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4393,6 +4393,20 @@ MonoBehaviour:
     loop: 1
     sources: []
     index: 0
+  - name: switch
+    clips:
+    - {fileID: 8300000, guid: 1b478d554ef312744a653ef44a4dc66b, type: 3}
+    - {fileID: 8300000, guid: 0c5e2cc8a111a0a4db14a07e89ca060a, type: 3}
+    - {fileID: 8300000, guid: 3d38f152a1cfd8a40ae1f03f3786d7f1, type: 3}
+    - {fileID: 8300000, guid: 74e15c1f30bd1cf49b1aa167b7e94750, type: 3}
+    - {fileID: 8300000, guid: 1462fc40ce779b84ea6d893b8672ccee, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 0
+    sources: []
+    index: 0
 --- !u!1 &1904426212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,7 +4996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2106925576
 MonoBehaviour:
   m_ObjectHideFlags: 0

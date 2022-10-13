@@ -430,11 +430,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: restaurant
       objectReference: {fileID: 0}
-    - target: {fileID: 3409960480263509869, guid: 514e6b09fb71f814181ad7ae64e52458,
-        type: 3}
-      propertyPath: consumption
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4614864725403938071, guid: 514e6b09fb71f814181ad7ae64e52458,
         type: 3}
       propertyPath: bakeKeys.Array.size
@@ -33308,11 +33303,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6003684364285313094, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
         type: 3}
-      propertyPath: consumption
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003684364285313094, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
-        type: 3}
       propertyPath: peopleCount
       value: 1
       objectReference: {fileID: 0}
@@ -34857,11 +34847,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: office
-      objectReference: {fileID: 0}
-    - target: {fileID: 6921851167426984789, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
-        type: 3}
-      propertyPath: consumption
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8830866305658330484, guid: d1b9b2bcb7cb6664dacc2db1c37addae,
         type: 3}

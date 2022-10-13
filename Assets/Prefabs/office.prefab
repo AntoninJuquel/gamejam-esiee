@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   peopleCount: 0
-  consumption: 0
+  consumption: 2.5
   mortalityRate: 0
   unhappyRate: 0
   windows: []

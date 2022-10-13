@@ -55,6 +55,7 @@ public class BuildingSelector : MonoBehaviour
         if (!_currentBuilding) return;
         _currentBuilding.setIsConsumming(on);
         consumingRef.Value = on;
+        AudioManager.Instance.Play("switch");
     }
 
     private void OnUpdate(int ppl, bool consuming)
