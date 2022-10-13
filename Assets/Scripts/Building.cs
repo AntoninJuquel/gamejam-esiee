@@ -12,7 +12,6 @@ public class Building : MonoBehaviour
     public double mortalityCount { get; set; } = 0;
     public double unhappyCount { get; set; } = 0;
 
-    bool isConsumming = true;
     [SerializeField] private int windowIndex;
 
     bool isConsumming;
@@ -29,10 +28,12 @@ public class Building : MonoBehaviour
     {
         return this.consumption;
     }
+
     public bool getIsConsumming()
     {
         return this.isConsumming;
     }
+
     public int getPeopleCount()
     {
         return this.peopleCount;
@@ -42,6 +43,7 @@ public class Building : MonoBehaviour
     {
         return (isConsumming || peopleCount <= 0) ? 0 : mortalityRate;
     }
+
     public double getUnhappyRate()
     {
         return (isConsumming || peopleCount <= 0) ? 0 : unhappyRate;
@@ -101,7 +103,7 @@ public class Building : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {    
+    {
         mortalityCount = 0;
         unhappyCount = 0;
     }
