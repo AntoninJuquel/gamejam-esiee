@@ -14,8 +14,8 @@ public class EventManager : MonoBehaviour
             this.gameEvent = gameEvent;
         }
 
-        public double time;
-        public Component gameEvent;
+        [SerializeField] double time;
+        [SerializeField] Component gameEvent;
 
         public void action()
         {
@@ -28,9 +28,8 @@ public class EventManager : MonoBehaviour
         }
     };
 
-    private int currentEventIndex = 0;
-    private double timer = 0;
-
+    int currentEventIndex = 0;
+    double timer = 0;
     [SerializeField] private List<TimedEvent> timelines = new List<TimedEvent>();
 
 /*
@@ -39,10 +38,6 @@ public class EventManager : MonoBehaviour
         timelines.Add(new TimedEvent(time, gameEvent));
     }
 */
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     private bool isCurrentEventOccuring()
     {
