@@ -239,7 +239,7 @@ MeshRenderer:
   - {fileID: -2870021472586168505, guid: bb5d16aaaae50c64eb2b9c6cc1d3c608, type: 3}
   - {fileID: 1550975326256456482, guid: bb5d16aaaae50c64eb2b9c6cc1d3c608, type: 3}
   - {fileID: -3963241562183589234, guid: bb5d16aaaae50c64eb2b9c6cc1d3c608, type: 3}
-  - {fileID: 3398073514908505954, guid: bb5d16aaaae50c64eb2b9c6cc1d3c608, type: 3}
+  - {fileID: 2100000, guid: 18293e3b9637b0b42b11d37a1e375b98, type: 2}
   - {fileID: 8457432598939410078, guid: bb5d16aaaae50c64eb2b9c6cc1d3c608, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   consumption: 0
   mortalityRate: 0
   unhappyRate: 0
-  windowIndex: 0
+  windowIndex: 3
 --- !u!65 &2411085000113227245
 BoxCollider:
   m_ObjectHideFlags: 0
