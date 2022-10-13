@@ -6,100 +6,56 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    [SerializeField] int peopleCount;
-    [SerializeField] double consumption;
-    [SerializeField] double mortalityRate;
-    [SerializeField] double unhappyRate;
-    [SerializeField] private GameObject[] windows;
-    public event Action<int, bool> OnUpdate;
-    public double mortalityCount { get; set; } = 0;
-    public double unhappyCount { get; set; } = 0;
+    [SerializeField] public double Consumption { get; }
+    [SerializeField] public double DeathRate { get; }
+    [SerializeField] public double UnhappyRate { get; }
+    [SerializeField] public bool IsConsumming { get => IsConsumming; set => setIsConsumming(value); }
 
     [SerializeField] private int windowIndex;
 
-    bool isConsumming;
+    [SerializeField] private GameObject[] windows;
+    public event Action<int, bool> OnUpdate;
     private MeshRenderer _meshRenderer;
     private Material _windowMat;
 
-    //Les getters
+    HashSet<People> peoples = new HashSet<People>();
+
+    public int PeopleCount => peoples.Count;
+    public bool HasPeople => peoples.Count>0;
+
+    double unhappy = 0;
+    double death = 0;
+
     public double getActiveConsumption()
     {
-        return (isConsumming) ? this.consumption : 0;
+        return (IsConsumming) ? this.Consumption : 0;
     }
 
-    public double getConsumption()
+    void setIsConsumming(bool a)
     {
-        return this.consumption;
-    }
-
-    public bool getIsConsumming()
-    {
-        return this.isConsumming;
-    }
-
-    public int getPeopleCount()
-    {
-        return this.peopleCount;
-    }
-
-    public double getMortalityRate()
-    {
-        return (isConsumming || peopleCount <= 0) ? 0 : mortalityRate;
-    }
-
-    public double getUnhappyRate()
-    {
-        return (isConsumming || peopleCount <= 0) ? 0 : unhappyRate;
-    }
-
-    //Les setters
-    public void setConso(double c)
-    {
-        this.consumption = c;
-    }
-
-    public void setIsConsumming(bool a)
-    {
-        this.isConsumming = a;
+        this.IsConsumming = a;
 
         if (a)
             _windowMat.EnableKeyword("_EMISSION");
         else
             _windowMat.DisableKeyword("_EMISSION");
-        foreach (var window in windows)
+foreach (var window in windows)
         {
             window.SetActive(a);
         }
-        OnUpdate?.Invoke(peopleCount, isConsumming);
+        OnUpdate?.Invoke(PeopleCount, IsConsumming);
     }
 
-    public void setNbHab(int p)
+    public void AddPeople(People p)
     {
-        this.peopleCount = p;
+        peoples.Add(p);
+        OnUpdate?.Invoke(PeopleCount, IsConsumming);
     }
 
-    public void setMortalityRate(double m)
+    public void RemovePeople(People p)
     {
-        this.mortalityRate = m;
-    }
-
-    public void setUnhappyRate(double u)
-    {
-        this.unhappyRate = u;
-    }
-
-    //M�thode qui ajoute des personnes
-    public void addPeople(int h)
-    {
-        this.peopleCount += h;
-        OnUpdate?.Invoke(peopleCount, isConsumming);
-    }
-
-    //M�thode qui retire des personnes
-    public void subPeople(int h)
-    {
-        peopleCount -= (peopleCount > h) ? h : peopleCount;
-        OnUpdate?.Invoke(peopleCount, isConsumming);
+        peoples.Remove(p);
+        OnUpdate?.Invoke(PeopleCount, IsConsumming);
     }
 
     private void Awake()
@@ -111,10 +67,18 @@ public class Building : MonoBehaviour
         _meshRenderer.materials = materials.ToArray();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        mortalityCount = 0;
-        unhappyCount = 0;
+        if (!IsConsumming && HasPeople)
+        {
+            death += DeathRate * Time.deltaTime;
+            unhappy += UnhappyRate * Time.deltaTime;
+        }
+
+        while (death >= 1)
+        {
+            death--;
+
+        }
     }
 }

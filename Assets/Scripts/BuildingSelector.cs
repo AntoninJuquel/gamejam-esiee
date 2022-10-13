@@ -29,27 +29,24 @@ public class BuildingSelector : MonoBehaviour
         }
     }
 
-    private void SelectBuilding(Building building)
+    private void SelectBuilding(Building b)
     {
-        if (!building) return;
+        if (!b) return;
         if (_currentBuilding)
         {
             _currentBuilding.GetComponent<Outline>().enabled = false;
             _currentBuilding.OnUpdate -= OnUpdate;
         }
 
-        var isConsuming = building.getIsConsumming();
-        var peopleCount = building.getPeopleCount();
-
         panel.SetActive(true);
-        _currentBuilding = building;
+        _currentBuilding = b;
         _currentBuilding.GetComponent<Outline>().enabled = true;
         _currentBuilding.OnUpdate += OnUpdate;
-        consumptionRef.Value = building.getConsumption();
-        peopleRef.Value = peopleCount;
-        consumingRef.Value = isConsuming;
+        consumptionRef.Value = b.Consumption;
+        peopleRef.Value = b.PeopleCount;
+        consumingRef.Value = b.IsConsumming;
         buildingNameRef.Value = building.name;
-        OnUpdate(peopleCount, isConsuming);
+        OnUpdate(b.PeopleCount, b.IsConsumming);
     }
 
     public void ToggleLight(bool on)
