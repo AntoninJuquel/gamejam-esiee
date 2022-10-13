@@ -1,0 +1,6 @@
+[submodule "Assets/ScreenNavigation"]
+	path = Assets/ScreenNavigation
+	url = https://github.com/AntoninJuquel/ScreenNavigation
+[submodule "Assets/ReferenceSharing"]
+	path = Assets/ReferenceSharing
+	url = https://github.com/AntoninJuquel/ReferenceSharing

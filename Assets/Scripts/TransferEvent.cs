@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class TransferEvent : MonoBehaviour, IGameEvent
 {
+    [SerializeField] Building buildingA;
+    [SerializeField] Building buildingB;
+    [SerializeField] int nbPeopleTransfer;
 
-    [System.Serializable] Building buildingA;
-    [System.Serializable] Building buildingB;
-    [System.Serializable] int nbPeopleTransfer;
-
-    //Méthode qui transfère nbPeopleTransfer du bâtiment A au bâtiment B
+    //Mï¿½thode qui transfï¿½re nbPeopleTransfer du bï¿½timent A au bï¿½timent B
     public void action()
     {
-        if(this.buildingA.getNbHab() == this.nbPeopleTransfer)
+        if (this.buildingA.getPeopleCount() == this.nbPeopleTransfer)
         {
-            this.buildingB.addHab(this.nbPeopleTransfer);
-            this.buildingA.removeHab(this.nbPeopleTransfer);
+            this.buildingB.addPeople(this.nbPeopleTransfer);
+            this.buildingA.subPeople(this.nbPeopleTransfer);
         }
-        else { throw new InvalidOperationException("Le bâtiment ne contient pas le nombre d'habitant que vous souhaitez tranférer"); }
+        else
+        {
+            throw new InvalidOperationException("Le bï¿½timent ne contient pas le nombre d'habitant que vous souhaitez tranfï¿½rer");
+        }
     }
 }
