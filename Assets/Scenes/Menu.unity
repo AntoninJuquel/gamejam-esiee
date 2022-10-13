@@ -2963,6 +2963,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d861f43820c884c839044f2501a608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseTimers:
+  - 45
+  - 25
+  - 30
+  _buildingSelector: {fileID: 1966250640}
   _navigator: {fileID: 1184602167}
 --- !u!1 &1389040529
 GameObject:
@@ -3969,6 +3974,48 @@ MonoBehaviour:
   - name: night club
     clips:
     - {fileID: 8300000, guid: 70359e7f5e56cc643a6fd3af80c9a7a7, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: dialog
+    clips:
+    - {fileID: 8300000, guid: a4092c32d578f2643ba71c1b6b5d9e87, type: 3}
+    - {fileID: 8300000, guid: a2b00995a94ebe24c81dc0d7a985a9d7, type: 3}
+    - {fileID: 8300000, guid: 639c8f58001ea2d4bb2c9157c471760e, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 0
+    sources: []
+    index: 0
+  - name: theme
+    clips:
+    - {fileID: 8300000, guid: 6e83f38fa3539384a870081bec3499ec, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 0.05
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: win
+    clips:
+    - {fileID: 8300000, guid: 54e4fa4d623aed44f9f2b5cfe68ed8d4, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: lose
+    clips:
+    - {fileID: 8300000, guid: 2cd18c880d61f6047b6048d172ed6837, type: 3}
     outputAudioMixerGroup: {fileID: 0}
     volume: 1
     spatialBlend: 0

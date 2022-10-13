@@ -90,6 +90,8 @@ public class BuildingSelector : MonoBehaviour
 
     private void OnDisable()
     {
+        if (_lastSound != "")
+            AudioManager.Instance.Stop(_lastSound);
         if (_currentBuilding)
             _currentBuilding.OnUpdate -= OnUpdate;
     }

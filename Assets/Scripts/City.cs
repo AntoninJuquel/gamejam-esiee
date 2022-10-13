@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class City : MonoBehaviour
 {
     [SerializeField] EventManager eventManager;
-    [SerializeField] UnityEvent<bool> isGameWin;
+    public event Action<bool> isGameWin;
     [SerializeField] double timer;
     [SerializeField] double startingBatteryLevel;
     List<Building> buildings = new List<Building>();
