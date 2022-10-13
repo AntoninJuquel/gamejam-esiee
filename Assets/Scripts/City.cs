@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ReferenceSharing;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,7 @@ public class City : MonoBehaviour
     [SerializeField] double timer;
     [SerializeField] double startingBatteryLevel;
     List<Building> buildings = new List<Building>();
+    [SerializeField] Reference<double> batteryLevelRef, startingBatteryRef;
 
     double eventTimer = 0;
     double batteryCount;
@@ -112,6 +114,8 @@ public class City : MonoBehaviour
     void Start()
     {
         batteryCount = startingBatteryLevel;
+        startingBatteryRef.Value = startingBatteryLevel;
+        batteryLevelRef.Value = startingBatteryLevel;
         isPause = false;
         Building[] tabBuilding = FindObjectsOfType<Building>();
         for (int i = 0; i < tabBuilding.Length; i++)
@@ -145,11 +149,11 @@ public class City : MonoBehaviour
         foreach (var b in buildings)
         {
             b.unhappyCount += Time.deltaTime * b.getUnhappyRate();
-            int unhappyPeople = (int) Math.Floor(b.unhappyCount);
+            int unhappyPeople = (int)Math.Floor(b.unhappyCount);
             b.unhappyCount -= unhappyPeople;
 
             b.mortalityCount += Time.deltaTime * b.getMortalityRate();
-            int mortalityPeople = (int) Math.Floor(b.mortalityCount);
+            int mortalityPeople = (int)Math.Floor(b.mortalityCount);
             b.mortalityCount -= mortalityPeople;
 
             b.subPeople(unhappyPeople + mortalityPeople);
@@ -165,6 +169,7 @@ public class City : MonoBehaviour
             eventManager.UpdateEventList(eventTimer);
             timer -= Time.deltaTime;
             batteryCount -= getCityConsumption() * Time.deltaTime;
+            batteryLevelRef.Value = batteryCount;
         }
 
         if (batteryCount <= 0)

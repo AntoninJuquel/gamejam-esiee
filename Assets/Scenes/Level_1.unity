@@ -34498,6 +34498,14 @@ MonoBehaviour:
       m_Calls: []
   timer: 30
   startingBatteryLevel: 50
+  batteryLevelRef:
+    useConstant: 0
+    constantValue: 0
+    Variable: {fileID: 11400000, guid: 745931f1509a4fa4bb762219f501a3f2, type: 2}
+  startingBatteryRef:
+    useConstant: 0
+    constantValue: 0
+    Variable: {fileID: 11400000, guid: 4391e57d56e3a4f4485417cafabb6e48, type: 2}
   isPause: 0
 --- !u!4 &1814306372
 Transform:
