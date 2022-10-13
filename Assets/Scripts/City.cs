@@ -1,16 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class City : MonoBehaviour
 {
+    [SerializeField] EventManager eventManager;
+    [SerializeField] UnityEvent<bool> isGameWin;
     [SerializeField] double timer;
     [SerializeField] double startingBatteryLevel;
-    [SerializeField] List<Building> building = new List<Building>();
+    List<Building> buildings = new List<Building>();
 
+    double eventTimer = 0;
     double batteryCount;
     int nbDead;
     int nbLeave;
+
+    public bool isPause = false;
 
     //Les getters
     public double getBattery()
@@ -20,7 +27,7 @@ public class City : MonoBehaviour
 
     public List<Building> getBuilding()
     {
-        return this.building;
+        return this.buildings;
     }
 
     public int getNbDead()
@@ -46,7 +53,7 @@ public class City : MonoBehaviour
 
     public void setBuilding(List<Building> b)
     {
-        this.building = b;
+        this.buildings = b;
     }
 
     public void setNbDead(int n)
@@ -80,9 +87,9 @@ public class City : MonoBehaviour
     public int getNbPeople()
     {
         int somme = 0;
-        for (int i = 0; i < this.building.Count; i++)
+        for (int i = 0; i < this.buildings.Count; i++)
         {
-            somme += this.building[i].getPeopleCount();
+            somme += this.buildings[i].getPeopleCount();
         }
 
         return somme;
@@ -92,9 +99,9 @@ public class City : MonoBehaviour
     public double getCityConsumption()
     {
         double somme = 0;
-        for (int i = 0; i < this.building.Count; i++)
+        for (int i = 0; i < this.buildings.Count; i++)
         {
-            somme += this.building[i].getConsumption();
+            somme += this.buildings[i].getConsumption();
         }
 
         return somme;
@@ -104,17 +111,77 @@ public class City : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        batteryCount = startingBatteryLevel;
+        isPause = false;
         Building[] tabBuilding = FindObjectsOfType<Building>();
         for (int i = 0; i < tabBuilding.Length; i++)
         {
-            this.building.Add(tabBuilding[i]);
+            this.buildings.Add(tabBuilding[i]);
+        }
+    }
+
+    void win()
+    {
+        isPause = true;
+        isGameWin?.Invoke(true);
+    }
+
+    void lose()
+    {
+        isPause = true;
+        isGameWin?.Invoke(false);
+    }
+
+    void turnOffAllBuilding()
+    {
+        foreach (var b in buildings)
+        {
+            b.setIsConsumming(false);
+        }
+    }
+
+    void updateAllPeopleCount()
+    {
+        foreach (var b in buildings)
+        {
+            b.unhappyCount += Time.deltaTime * b.getUnhappyRate();
+            int unhappyPeople = (int) Math.Floor(b.unhappyCount);
+            b.unhappyCount -= unhappyPeople;
+
+            b.mortalityCount += Time.deltaTime * b.getMortalityRate();
+            int mortalityPeople = (int) Math.Floor(b.mortalityCount);
+            b.mortalityCount -= mortalityPeople;
+
+            b.subPeople(unhappyPeople + mortalityPeople);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        batteryCount -= getCityConsumption();
+        if (!isPause)
+        {
+            eventTimer += Time.deltaTime;
+            eventManager.UpdateEventList(eventTimer);
+            timer -= Time.deltaTime;
+            batteryCount -= getCityConsumption() * Time.deltaTime;
+        }
+
+        if (batteryCount <= 0)
+        {
+            turnOffAllBuilding();
+        }
+
+        updateAllPeopleCount();
+
+        if (timer <= 0)
+        {
+            win();
+        }
+
+        if (getNbPeople() == 0 && timer > 0)
+        {
+            lose();
+        }
     }
 }

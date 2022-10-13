@@ -8,8 +8,10 @@ public class Building : MonoBehaviour
     [SerializeField] double consumption;
     [SerializeField] double mortalityRate;
     [SerializeField] double unhappyRate;
+    public double mortalityCount { get; set; } = 0;
+    public double unhappyCount { get; set; } = 0;
 
-    bool isConsumming;
+    bool isConsumming = true;
 
     //Les getters
     public double getActiveConsumption()
@@ -21,12 +23,10 @@ public class Building : MonoBehaviour
     {
         return this.consumption;
     }
-
     public bool getIsConsumming()
     {
         return this.isConsumming;
     }
-
     public int getPeopleCount()
     {
         return this.peopleCount;
@@ -34,12 +34,11 @@ public class Building : MonoBehaviour
 
     public double getMortalityRate()
     {
-        return this.mortalityRate;
+        return (isConsumming || peopleCount <= 0) ? 0 : mortalityRate;
     }
-
     public double getUnhappyRate()
     {
-        return this.unhappyRate;
+        return (isConsumming || peopleCount <= 0) ? 0 : unhappyRate;
     }
 
     //Les setters
@@ -77,13 +76,15 @@ public class Building : MonoBehaviour
     //M�thode qui retire des personnes
     public void subPeople(int h)
     {
-        this.peopleCount -= h;
+        peopleCount -= (peopleCount > h) ? h : peopleCount;
     }
 
 
     // Start is called before the first frame update
     void Start()
-    {
+    {    
+        mortalityCount = 0;
+        unhappyCount = 0;
     }
 
     // Update is called once per frame

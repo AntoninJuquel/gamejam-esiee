@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EventManager : MonoBehaviour
 {
     [System.Serializable]
-    public class TimedEvent : IGameEvent
+    class TimedEvent : IGameEvent
     {
         public TimedEvent(double time, Component gameEvent)
         {
@@ -29,7 +29,6 @@ public class EventManager : MonoBehaviour
     };
 
     int currentEventIndex = 0;
-    double timer = 0;
     [SerializeField] private List<TimedEvent> timelines = new List<TimedEvent>();
 
 /*
@@ -39,22 +38,20 @@ public class EventManager : MonoBehaviour
     }
 */
 
-    private bool isCurrentEventOccuring()
+    bool isCurrentEventOccuring(double timer)
     {
         return timelines[currentEventIndex].getTime() < timer;
     }
 
 
-    private bool hasEventLeft()
+    bool hasEventLeft()
     {
         return timelines.Count > currentEventIndex;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateEventList(double timer)
     {
-        timer += Time.deltaTime;
-        while (hasEventLeft() && isCurrentEventOccuring())
+        while (hasEventLeft() && isCurrentEventOccuring(timer))
         {
             var currentEvent = timelines[currentEventIndex++];
             currentEvent.action();
