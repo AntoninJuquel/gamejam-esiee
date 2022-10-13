@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Building : MonoBehaviour
@@ -8,8 +9,11 @@ public class Building : MonoBehaviour
     [SerializeField] double consumption;
     [SerializeField] double mortalityRate;
     [SerializeField] double unhappyRate;
+    [SerializeField] private int windowIndex;
 
     bool isConsumming;
+    private MeshRenderer _meshRenderer;
+    private Material _windowMat;
 
     //Les getters
     public double getActiveConsumption()
@@ -51,6 +55,11 @@ public class Building : MonoBehaviour
     public void setIsConsumming(bool a)
     {
         this.isConsumming = a;
+
+        if (a)
+            _windowMat.EnableKeyword("_EMISSION");
+        else
+            _windowMat.DisableKeyword("_EMISSION");
     }
 
     public void setNbHab(int p)
@@ -80,6 +89,14 @@ public class Building : MonoBehaviour
         this.peopleCount -= h;
     }
 
+    private void Awake()
+    {
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _windowMat = Instantiate(_meshRenderer.sharedMaterials[windowIndex]);
+        var materials = _meshRenderer.sharedMaterials.ToList();
+        materials[windowIndex] = _windowMat;
+        _meshRenderer.materials = materials.ToArray();
+    }
 
     // Start is called before the first frame update
     void Start()
