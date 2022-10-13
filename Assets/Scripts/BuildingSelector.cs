@@ -1,5 +1,4 @@
 using ReferenceSharing;
-using ReferenceSharing.Variables;
 using UnityEngine;
 
 public class BuildingSelector : MonoBehaviour
@@ -32,11 +31,15 @@ public class BuildingSelector : MonoBehaviour
     {
         if (!building) return;
         if (_currentBuilding)
+        {
             _currentBuilding.GetComponent<Outline>().enabled = false;
+            _currentBuilding.OnPeopleUpdate -= UpdatePeople;
+        }
 
         panel.SetActive(true);
         _currentBuilding = building;
         _currentBuilding.GetComponent<Outline>().enabled = true;
+        _currentBuilding.OnPeopleUpdate += UpdatePeople;
         consumptionRef.Value = building.getConsumption();
         peopleRef.Value = building.getPeopleCount();
         consumingRef.Value = building.getIsConsumming();
@@ -47,5 +50,15 @@ public class BuildingSelector : MonoBehaviour
         if (!_currentBuilding) return;
         _currentBuilding.setIsConsumming(on);
         consumingRef.Value = on;
+    }
+
+    private void UpdatePeople(int ppl)
+    {
+        peopleRef.Value = ppl;
+    }
+
+    private void OnDisable()
+    {
+        _currentBuilding.OnPeopleUpdate -= UpdatePeople;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ public class Building : MonoBehaviour
     [SerializeField] double consumption;
     [SerializeField] double mortalityRate;
     [SerializeField] double unhappyRate;
+    public event Action<int> OnPeopleUpdate; 
+    public double mortalityCount { get; set; } = 0;
+    public double unhappyCount { get; set; } = 0;
+
     [SerializeField] private int windowIndex;
 
     bool isConsumming;
@@ -38,12 +43,12 @@ public class Building : MonoBehaviour
 
     public double getMortalityRate()
     {
-        return this.mortalityRate;
+        return (isConsumming || peopleCount <= 0) ? 0 : mortalityRate;
     }
 
     public double getUnhappyRate()
     {
-        return this.unhappyRate;
+        return (isConsumming || peopleCount <= 0) ? 0 : unhappyRate;
     }
 
     //Les setters
@@ -81,12 +86,14 @@ public class Building : MonoBehaviour
     public void addPeople(int h)
     {
         this.peopleCount += h;
+        OnPeopleUpdate?.Invoke(peopleCount);
     }
 
     //M�thode qui retire des personnes
     public void subPeople(int h)
     {
-        this.peopleCount -= h;
+        peopleCount -= (peopleCount > h) ? h : peopleCount;
+        OnPeopleUpdate?.Invoke(peopleCount);
     }
 
     private void Awake()
@@ -101,6 +108,8 @@ public class Building : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mortalityCount = 0;
+        unhappyCount = 0;
     }
 
     // Update is called once per frame

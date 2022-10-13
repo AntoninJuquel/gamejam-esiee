@@ -7,19 +7,14 @@ public class TransferEvent : MonoBehaviour, IGameEvent
 {
     [SerializeField] Building buildingA;
     [SerializeField] Building buildingB;
-    [SerializeField] int nbPeopleTransfer;
+    [SerializeField] int peopleToTransfer;
 
     //M�thode qui transf�re nbPeopleTransfer du b�timent A au b�timent B
     public void action()
     {
-        if (this.buildingA.getPeopleCount() == this.nbPeopleTransfer)
-        {
-            this.buildingB.addPeople(this.nbPeopleTransfer);
-            this.buildingA.subPeople(this.nbPeopleTransfer);
-        }
-        else
-        {
-            throw new InvalidOperationException("Le b�timent ne contient pas le nombre d'habitant que vous souhaitez tranf�rer");
-        }
+        var buildingAPeopleCount = buildingA.getPeopleCount();
+        var transferablePeopleCount = (peopleToTransfer > buildingAPeopleCount) ? buildingAPeopleCount : peopleToTransfer;
+        buildingB.addPeople(transferablePeopleCount);
+        buildingA.subPeople(transferablePeopleCount);
     }
 }

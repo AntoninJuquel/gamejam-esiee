@@ -10,13 +10,8 @@ public class SubEvent : MonoBehaviour, IGameEvent
 
     public void action()
     {
-        if (this.building.getPeopleCount() == this.nbPeopleToSub)
-        {
-            this.building.subPeople(this.nbPeopleToSub);
-        }
-        else
-        {
-            throw new InvalidOperationException("Le b�timent ne contient pas le nombre d'habitant que vous souhaitez supprimer");
-        }
+        var buildingPeopleCount = building.getPeopleCount();
+        var removingPeople = (nbPeopleToSub > buildingPeopleCount) ? buildingPeopleCount : nbPeopleToSub;
+        this.building.subPeople(removingPeople);
     }
 }
