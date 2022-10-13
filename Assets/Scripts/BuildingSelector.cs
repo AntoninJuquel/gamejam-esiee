@@ -38,14 +38,14 @@ public class BuildingSelector : MonoBehaviour
             _currentBuilding.OnUpdate -= OnUpdate;
         }
 
-        var isConsuming = building.getIsConsumming();
-        var peopleCount = building.getPeopleCount();
+        var isConsuming = building.Powered;
+        var peopleCount = building.Population;
 
         panel.SetActive(true);
         _currentBuilding = building;
         _currentBuilding.GetComponent<Outline>().enabled = true;
         _currentBuilding.OnUpdate += OnUpdate;
-        consumptionRef.Value = building.getConsumption();
+        consumptionRef.Value = building.PowerConsumption;
         peopleRef.Value = peopleCount;
         consumingRef.Value = isConsuming;
         buildingNameRef.Value = building.name;
@@ -55,7 +55,7 @@ public class BuildingSelector : MonoBehaviour
     public void ToggleLight(bool on)
     {
         if (!_currentBuilding) return;
-        _currentBuilding.setIsConsumming(on);
+        _currentBuilding.SetPower(on);
         consumingRef.Value = on;
         AudioManager.Instance.Play("switch");
     }

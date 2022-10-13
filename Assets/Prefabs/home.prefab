@@ -469,12 +469,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484d63a4226b014428c2d8656c38a055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peopleCount: 0
-  consumption: 1
-  mortalityRate: 0
-  unhappyRate: 0
-  windows: []
   windowIndex: 3
+  <Population>k__BackingField: 0
+  <PowerConsumption>k__BackingField: 1
+  fleeTime: 10
+  fleeRate: 1
+  fleeNumber: 1
+  deathRate: 0
 --- !u!65 &3692297669434729356
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c203f6e36748efa3135c1cad585dd2, type: 3}
-  m_Name: Deaths
+  m_Script: {fileID: 11500000, guid: bfe31cf7cc894a898efb854b651a05b6, type: 3}
+  m_Name: CurrentBuilding.Name
   m_EditorClassIdentifier: 
-  _value: 0
+  _value: 
