@@ -6,6 +6,9 @@ public class Building : MonoBehaviour
 {
     public event Action<int, bool> OnUpdate;
 
+    [SerializeField] private Vector3 spawnPoint;
+    [SerializeField] private GameObject deathParticles;
+
     [SerializeField] private int windowIndex;
     private MeshRenderer _meshRenderer;
     private Material _windowMat;
@@ -81,18 +84,28 @@ public class Building : MonoBehaviour
         if (_fleeAmount >= fleeTime)
         {
             _fleeTimer += Time.deltaTime * fleeRate;
-            if (!(_fleeTimer >= 1)) return;
-            _fleeTimer = 0;
-            RemovePopulation(fleeNumber);
+            if (_fleeTimer >= 1)
+            {
+                _fleeTimer = 0;
+                RemovePopulation(fleeNumber);
+            }
         }
         else
         {
             _fleeTimer = 0;
         }
 
+        if (Powered) return;
+        
         _deathTimer += Time.deltaTime * deathRate;
         if (!(_deathTimer >= 1)) return;
         _deathTimer = 0;
         RemovePopulation(1);
+        Instantiate(deathParticles, spawnPoint + transform.position, Quaternion.identity);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(spawnPoint + transform.position, .1f);
     }
 }
