@@ -13,6 +13,7 @@ public class City : MonoBehaviour
     [SerializeField] double startingBatteryLevel;
     List<Building> buildings = new List<Building>();
     [SerializeField] Reference<double> batteryLevelRef, startingBatteryRef;
+    [SerializeField] private Reference<int> totalPeopleRef;
 
     double eventTimer = 0;
     double batteryCount;
@@ -94,6 +95,7 @@ public class City : MonoBehaviour
             somme += this.buildings[i].getPeopleCount();
         }
 
+        totalPeopleRef.Value = somme;
         return somme;
     }
 
