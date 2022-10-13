@@ -21,6 +21,7 @@ public class City : MonoBehaviour
     int nbLeave;
 
     public bool isPause = false;
+    private bool playingAlert = false;
 
     //Les getters
     public double getBattery()
@@ -115,11 +116,13 @@ public class City : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance.Stop("alert");
         batteryCount = startingBatteryLevel;
         startingBatteryRef.Value = startingBatteryLevel;
         batteryLevelRef.Value = startingBatteryLevel;
         batteryPercentRef.Value = batteryLevelRef / startingBatteryLevel;
         isPause = false;
+        playingAlert = false;
         Building[] tabBuilding = FindObjectsOfType<Building>();
         for (int i = 0; i < tabBuilding.Length; i++)
         {
@@ -129,12 +132,14 @@ public class City : MonoBehaviour
 
     void win()
     {
+        AudioManager.Instance.Stop("alert");
         isPause = true;
         isGameWin?.Invoke(true);
     }
 
     void lose()
     {
+        AudioManager.Instance.Stop("alert");
         isPause = true;
         isGameWin?.Invoke(false);
     }
@@ -177,6 +182,11 @@ public class City : MonoBehaviour
             batteryCount -= getCityConsumption() * Time.deltaTime;
             batteryLevelRef.Value = batteryCount;
             batteryPercentRef.Value = batteryCount / startingBatteryLevel;
+            if (batteryCount / startingBatteryLevel <= .25 && !playingAlert)
+            {
+                playingAlert = true;
+                AudioManager.Instance.Play("alert");
+            }
         }
 
         if (batteryCount <= 0)

@@ -38,8 +38,8 @@ public class LevelSelector : MonoBehaviour
         {
             _currentCity = FindObjectOfType<City>();
             _currentCity.isGameWin += OnGameWin;
-            Invoke("PauseGameBeforeDialog", 1f);
-            Invoke("UnPauseAfterDialog", pauseTimers[_currentLevelIndex - 1]);
+            Invoke(nameof(PauseGameBeforeDialog), 1f);
+            Invoke(nameof(UnPauseAfterDialog), pauseTimers[_currentLevelIndex - 1]);
         }
     }
 
@@ -99,6 +99,7 @@ public class LevelSelector : MonoBehaviour
     {
         AudioManager.Instance.Stop("theme");
         AudioManager.Instance.Stop("dialog");
+        AudioManager.Instance.Stop("alert");
         _navigator.Navigate("Menu");
         SceneManager.LoadScene(0);
     }
@@ -108,6 +109,13 @@ public class LevelSelector : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             GoToMenu();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            AudioManager.Instance.Stop("dialog");
+            UnPauseAfterDialog();
+            CancelInvoke(nameof(UnPauseAfterDialog));
         }
     }
 }

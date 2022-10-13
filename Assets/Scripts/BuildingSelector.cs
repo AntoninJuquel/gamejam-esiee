@@ -6,6 +6,7 @@ public class BuildingSelector : MonoBehaviour
     [SerializeField] private Reference<double> consumptionRef;
     [SerializeField] private Reference<int> peopleRef;
     [SerializeField] private Reference<bool> consumingRef;
+    [SerializeField] private Reference<string> buildingNameRef;
     [SerializeField] private GameObject panel;
     private Camera _mainCam;
     private Building _currentBuilding;
@@ -47,6 +48,7 @@ public class BuildingSelector : MonoBehaviour
         consumptionRef.Value = building.getConsumption();
         peopleRef.Value = peopleCount;
         consumingRef.Value = isConsuming;
+        buildingNameRef.Value = building.name;
         OnUpdate(peopleCount, isConsuming);
     }
 
