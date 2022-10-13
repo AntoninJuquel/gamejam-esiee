@@ -17154,6 +17154,10 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     Variable: {fileID: 11400000, guid: 4391e57d56e3a4f4485417cafabb6e48, type: 2}
+  totalPeopleRef:
+    useConstant: 0
+    constantValue: 0
+    Variable: {fileID: 11400000, guid: 6e145a7f910da714a803ec2a5abe3e25, type: 2}
   isPause: 0
 --- !u!4 &362103467
 Transform:
@@ -17913,6 +17917,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e82cf022ccde8a94e8a59eb897943c53,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e10ab498720b8084da1e2517ca435be7, type: 2}
     - target: {fileID: 919132149155446097, guid: e82cf022ccde8a94e8a59eb897943c53,
         type: 3}
       propertyPath: m_Name
