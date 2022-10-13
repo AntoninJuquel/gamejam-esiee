@@ -59,6 +59,7 @@ public class BuildingSelector : MonoBehaviour
 
     private void OnDisable()
     {
-        _currentBuilding.OnPeopleUpdate -= UpdatePeople;
+        if (_currentBuilding)
+            _currentBuilding.OnPeopleUpdate -= UpdatePeople;
     }
 }
