@@ -1,6 +1,8 @@
 using ScreenNavigation.Components;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class LevelSelector : MonoBehaviour
     [SerializeField] private BuildingSelector _buildingSelector;
     [SerializeField] private StackNavigator _navigator;
     [SerializeField] private GameObject exotronLogo;
+    [SerializeField] private Sprite winSp, loseSp;
+    [SerializeField] private Image reportPanel;
+    [TextArea] [SerializeField] private string winText, loseText;
+    [SerializeField] private TextMeshProUGUI speechText;
     private int _currentLevelIndex;
     private City _currentCity;
 
@@ -55,6 +61,8 @@ public class LevelSelector : MonoBehaviour
         _navigator.Navigate("GameOver");
         _buildingSelector.enabled = false;
         _buildingSelector.enabled = true;
+        reportPanel.sprite = win ? winSp : loseSp;
+        speechText.text = win ? winText : loseText;
         AudioManager.Instance.Stop("dialog");
         AudioManager.Instance.Stop("theme");
         AudioManager.Instance.Play(win ? "win" : "lose");

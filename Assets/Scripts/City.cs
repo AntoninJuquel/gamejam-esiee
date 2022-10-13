@@ -13,7 +13,7 @@ public class City : MonoBehaviour
     [SerializeField] double startingBatteryLevel;
     List<Building> buildings = new List<Building>();
     [SerializeField] Reference<double> batteryLevelRef, startingBatteryRef;
-    [SerializeField] private Reference<int> totalPeopleRef;
+    [SerializeField] private Reference<int> totalPeopleRef, deathRef, leaveRef;
     [SerializeField] private Reference<double> timerRef;
 
     double eventTimer = 0;
@@ -154,10 +154,12 @@ public class City : MonoBehaviour
             b.unhappyCount += Time.deltaTime * b.getUnhappyRate();
             int unhappyPeople = (int)Math.Floor(b.unhappyCount);
             b.unhappyCount -= unhappyPeople;
+            leaveRef.Value += unhappyPeople;
 
             b.mortalityCount += Time.deltaTime * b.getMortalityRate();
             int mortalityPeople = (int)Math.Floor(b.mortalityCount);
             b.mortalityCount -= mortalityPeople;
+            deathRef.Value += mortalityPeople;
 
             b.subPeople(unhappyPeople + mortalityPeople);
         }
