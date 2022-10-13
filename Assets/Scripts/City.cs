@@ -14,6 +14,7 @@ public class City : MonoBehaviour
     List<Building> buildings = new List<Building>();
     [SerializeField] Reference<double> batteryLevelRef, startingBatteryRef;
     [SerializeField] private Reference<int> totalPeopleRef;
+    [SerializeField] private Reference<double> timerRef;
 
     double eventTimer = 0;
     double batteryCount;
@@ -170,6 +171,7 @@ public class City : MonoBehaviour
             eventTimer += Time.deltaTime;
             eventManager.UpdateEventList(eventTimer);
             timer -= Time.deltaTime;
+            timerRef.Value = timer;
             batteryCount -= getCityConsumption() * Time.deltaTime;
             batteryLevelRef.Value = batteryCount;
         }

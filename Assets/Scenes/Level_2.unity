@@ -18730,9 +18730,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventManager: {fileID: 279118508}
-  isGameWin:
-    m_PersistentCalls:
-      m_Calls: []
   timer: 30
   startingBatteryLevel: 50
   batteryLevelRef:
@@ -18747,6 +18744,10 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     Variable: {fileID: 11400000, guid: 6e145a7f910da714a803ec2a5abe3e25, type: 2}
+  timerRef:
+    useConstant: 0
+    constantValue: 0
+    Variable: {fileID: 11400000, guid: d02186811c14b22478fe7abe69d791b4, type: 2}
   isPause: 0
 --- !u!4 &279118510
 Transform:
