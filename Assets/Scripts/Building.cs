@@ -80,6 +80,7 @@ public class Building : MonoBehaviour
 
     public void UpdateRates(double deltaTime)
     {
+        Debug.Log("X");
         if (!IsConsumming && HasPeople)
         {
             var alivePeoples = new HashSet<People>();

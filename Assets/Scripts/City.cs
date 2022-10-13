@@ -77,7 +77,9 @@ public class City : MonoBehaviour
         
         foreach (var p in peoples)
         {
+            Debug.Log("before");
             p.Start();
+            Debug.Log("after");
         }
     }
 
@@ -105,11 +107,13 @@ public class City : MonoBehaviour
 
     void updateAllPeoples()
     {
+        Debug.Log("1");
         foreach (var b in buildings)
         {
             b.UpdateRates(Time.deltaTime);
         }
 
+        Debug.Log("2");
         var alivePeoples = new HashSet<People>();
         foreach (var p in peoples)
         {
@@ -136,6 +140,7 @@ public class City : MonoBehaviour
     {
         if (!isPause)
         {
+            Debug.Log("not paused");
             tripTimer += Time.deltaTime;
             updateAllPeoples();
             timer -= Time.deltaTime;
