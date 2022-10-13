@@ -1,11 +1,12 @@
+using ReferenceSharing;
 using ReferenceSharing.Variables;
 using UnityEngine;
 
 public class BuildingSelector : MonoBehaviour
 {
-    [SerializeField] private Variable<double> consumptionRef;
-    [SerializeField] private Variable<int> peopleRef;
-    [SerializeField] private Variable<bool> consumingRef;
+    [SerializeField] private Reference<double> consumptionRef;
+    [SerializeField] private Reference<int> peopleRef;
+    [SerializeField] private Reference<bool> consumingRef;
     [SerializeField] private GameObject panel;
     private Camera _mainCam;
     private Building _currentBuilding;
