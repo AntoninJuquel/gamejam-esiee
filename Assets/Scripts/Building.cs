@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ public class Building : MonoBehaviour
     [SerializeField] double consumption;
     [SerializeField] double mortalityRate;
     [SerializeField] double unhappyRate;
+    public event Action<int> OnPeopleUpdate; 
     public double mortalityCount { get; set; } = 0;
     public double unhappyCount { get; set; } = 0;
 
@@ -84,12 +86,14 @@ public class Building : MonoBehaviour
     public void addPeople(int h)
     {
         this.peopleCount += h;
+        OnPeopleUpdate?.Invoke(peopleCount);
     }
 
     //M�thode qui retire des personnes
     public void subPeople(int h)
     {
         peopleCount -= (peopleCount > h) ? h : peopleCount;
+        OnPeopleUpdate?.Invoke(peopleCount);
     }
 
     private void Awake()

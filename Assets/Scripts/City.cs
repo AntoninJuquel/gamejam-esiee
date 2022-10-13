@@ -101,7 +101,7 @@ public class City : MonoBehaviour
         double somme = 0;
         for (int i = 0; i < this.buildings.Count; i++)
         {
-            somme += this.buildings[i].getConsumption();
+            somme += this.buildings[i].getActiveConsumption();
         }
 
         return somme;
