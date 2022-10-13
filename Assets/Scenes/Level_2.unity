@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18752,14 +18752,6 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     Variable: {fileID: 11400000, guid: 6e145a7f910da714a803ec2a5abe3e25, type: 2}
-  deathRef:
-    useConstant: 0
-    constantValue: 0
-    Variable: {fileID: 11400000, guid: 2d8e72bdd844448438161f0d0eef0d20, type: 2}
-  leaveRef:
-    useConstant: 0
-    constantValue: 0
-    Variable: {fileID: 11400000, guid: 32910d1510031a7438699da986ca3e1e, type: 2}
   isPause: 0
 --- !u!4 &279118510
 Transform:
@@ -49967,6 +49959,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040522493103628977, guid: dcdf84805904fa746bd5d504082b287c,
+        type: 3}
+      propertyPath: <Population>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcdf84805904fa746bd5d504082b287c, type: 3}

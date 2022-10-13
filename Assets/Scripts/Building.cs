@@ -21,7 +21,8 @@ public class Building : MonoBehaviour
     [SerializeField] private int fleeNumber;
 
     private double _deathTimer;
-    [SerializeField] [Range(0f, 1f)] private double deathRate;
+    [SerializeField] private double deathRate;
+    [SerializeField] private int deathNumber;
 
     public bool Powered { get; private set; }
     public double CurrentConsumption => Powered ? PowerConsumption : 0;
@@ -96,11 +97,11 @@ public class Building : MonoBehaviour
         }
 
         if (Powered) return;
-        
+
         _deathTimer += Time.deltaTime * deathRate;
         if (!(_deathTimer >= 1)) return;
         _deathTimer = 0;
-        RemovePopulation(1);
+        RemovePopulation(deathNumber);
         Instantiate(deathParticles, spawnPoint + transform.position, Quaternion.identity);
     }
 

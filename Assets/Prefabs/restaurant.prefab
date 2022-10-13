@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484d63a4226b014428c2d8656c38a055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {x: 0, y: 1.5, z: 0}
   deathParticles: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
     type: 3}
   windowIndex: 3

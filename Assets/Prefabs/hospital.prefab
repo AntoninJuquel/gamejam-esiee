@@ -187,12 +187,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484d63a4226b014428c2d8656c38a055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peopleCount: 0
-  consumption: 0
-  mortalityRate: 0
-  unhappyRate: 0
-  windows: []
+  spawnPoint: {x: 0, y: 2, z: 0}
+  deathParticles: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
+    type: 3}
   windowIndex: 2
+  <Population>k__BackingField: 0
+  <PowerConsumption>k__BackingField: 0
+  fleeTime: 0
+  fleeRate: 0
+  fleeNumber: 0
+  deathRate: 0.5
+  deathNumber: 3
 --- !u!65 &8364555391354930190
 BoxCollider:
   m_ObjectHideFlags: 0
