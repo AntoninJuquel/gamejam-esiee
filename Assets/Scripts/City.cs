@@ -104,6 +104,11 @@ public class City : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Building[] tabBuilding = FindObjectsOfType<Building>();
+        for (int i = 0; i < tabBuilding.Length; i++)
+        {
+            this.building.Add(tabBuilding[i]);
+        }
     }
 
     // Update is called once per frame
