@@ -12,9 +12,8 @@ public class City : MonoBehaviour
     [SerializeField] double timer;
     [SerializeField] double startingBatteryLevel;
     List<Building> buildings = new List<Building>();
-    [SerializeField] Reference<double> batteryLevelRef, startingBatteryRef;
+    [SerializeField] Reference<double> batteryLevelRef, startingBatteryRef, timerRef, batteryPercentRef;
     [SerializeField] private Reference<int> totalPeopleRef, deathRef, leaveRef;
-    [SerializeField] private Reference<double> timerRef;
 
     double eventTimer = 0;
     double batteryCount;
@@ -119,6 +118,7 @@ public class City : MonoBehaviour
         batteryCount = startingBatteryLevel;
         startingBatteryRef.Value = startingBatteryLevel;
         batteryLevelRef.Value = startingBatteryLevel;
+        batteryPercentRef.Value = batteryLevelRef / startingBatteryLevel;
         isPause = false;
         Building[] tabBuilding = FindObjectsOfType<Building>();
         for (int i = 0; i < tabBuilding.Length; i++)
@@ -176,6 +176,7 @@ public class City : MonoBehaviour
             timerRef.Value = timer;
             batteryCount -= getCityConsumption() * Time.deltaTime;
             batteryLevelRef.Value = batteryCount;
+            batteryPercentRef.Value = batteryCount / startingBatteryLevel;
         }
 
         if (batteryCount <= 0)

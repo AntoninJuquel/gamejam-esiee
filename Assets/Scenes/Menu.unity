@@ -464,7 +464,7 @@ MonoBehaviour:
     constantValue: 0
     Variable: {fileID: 11400000, guid: 6e145a7f910da714a803ec2a5abe3e25, type: 2}
   format: 
-  prefix: population\t\t
+  prefix: 'population : '
   suffix: 
 --- !u!1 &78566835
 GameObject:
@@ -620,7 +620,7 @@ MonoBehaviour:
     constantValue: 0
     Variable: {fileID: 11400000, guid: 2d8e72bdd844448438161f0d0eef0d20, type: 2}
   format: 
-  prefix: deaths\t\t\t
+  prefix: 'deaths : '
   suffix: 
 --- !u!1 &89138657
 GameObject:
@@ -1297,7 +1297,7 @@ MonoBehaviour:
     constantValue: 0
     Variable: {fileID: 11400000, guid: 32910d1510031a7438699da986ca3e1e, type: 2}
   format: 
-  prefix: departure\t\t
+  prefix: 'departure : '
   suffix: 
 --- !u!1 &410087039
 GameObject:
@@ -2749,7 +2749,7 @@ GameObject:
   - component: {fileID: 1082208850}
   - component: {fileID: 1082208852}
   m_Layer: 5
-  m_Name: energy
+  m_Name: battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2888,9 +2888,9 @@ MonoBehaviour:
   valueRef:
     useConstant: 0
     constantValue: 0
-    Variable: {fileID: 11400000, guid: 745931f1509a4fa4bb762219f501a3f2, type: 2}
-  format: 
-  prefix: Battery left\t\t
+    Variable: {fileID: 11400000, guid: da72b3fc47b7e42428fb040400de8b0a, type: 2}
+  format: 0.0
+  prefix: 'Battery left : '
   suffix: '%'
 --- !u!1 &1103559901
 GameObject:
