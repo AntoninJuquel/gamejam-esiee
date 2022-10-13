@@ -45,7 +45,7 @@ public class BuildingSelector : MonoBehaviour
         consumptionRef.Value = b.Consumption;
         peopleRef.Value = b.PeopleCount;
         consumingRef.Value = b.IsConsumming;
-        buildingNameRef.Value = building.name;
+        buildingNameRef.Value = b.name;
         OnUpdate(b.PeopleCount, b.IsConsumming);
     }
 
