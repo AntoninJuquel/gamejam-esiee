@@ -6,25 +6,32 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    [SerializeField] public double Consumption { get; }
-    [SerializeField] public double DeathRate { get; }
-    [SerializeField] public double UnhappyRate { get; }
-    [SerializeField] public bool IsConsumming { get => IsConsumming; set => setIsConsumming(value); }
+    [SerializeField] double consumption;
+    [SerializeField] double deathRate;
+    [SerializeField] double unhappinessRate;
+    [SerializeField] bool isConsuming;
+
+    public bool IsConsumming { get => isConsuming; set => setIsConsumming(value); }
+    public double DeathRate => isConsuming ? 0 : deathRate;
+    public double UnhappinessRate => isConsuming ? 0 : unhappinessRate;
+    public double Consumption => consumption;
+
 
     [SerializeField] private int windowIndex;
-
     [SerializeField] private GameObject[] windows;
     public event Action<int, bool> OnUpdate;
     private MeshRenderer _meshRenderer;
     private Material _windowMat;
 
+
     HashSet<People> peoples = new HashSet<People>();
-
     public int PeopleCount => peoples.Count;
-    public bool HasPeople => peoples.Count>0;
+    public bool HasPeople => peoples.Count > 0;
 
+    /*
     double unhappy = 0;
     double death = 0;
+    */
 
     public double getActiveConsumption()
     {
@@ -33,13 +40,17 @@ public class Building : MonoBehaviour
 
     void setIsConsumming(bool a)
     {
-        this.IsConsumming = a;
-
+        isConsuming = a;
         if (a)
+        {
             _windowMat.EnableKeyword("_EMISSION");
+        }
         else
+        {
             _windowMat.DisableKeyword("_EMISSION");
-foreach (var window in windows)
+        }
+
+        foreach (var window in windows)
         {
             window.SetActive(a);
         }
@@ -58,7 +69,7 @@ foreach (var window in windows)
         OnUpdate?.Invoke(PeopleCount, IsConsumming);
     }
 
-    private void Awake()
+    void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _windowMat = Instantiate(Resources.Load<Material>("window"));
@@ -67,18 +78,22 @@ foreach (var window in windows)
         _meshRenderer.materials = materials.ToArray();
     }
 
-    void Update()
+    public void UpdateRates(double deltaTime)
     {
         if (!IsConsumming && HasPeople)
         {
-            death += DeathRate * Time.deltaTime;
-            unhappy += UnhappyRate * Time.deltaTime;
-        }
+            var alivePeoples = new HashSet<People>();
+            foreach (var p in peoples)
+            {
+                p.Death += DeathRate * deltaTime;
+                p.Unhappiness += UnhappinessRate * deltaTime;
 
-        while (death >= 1)
-        {
-            death--;
-
+                if (p.IsAlive)
+                {
+                    alivePeoples.Add(p);
+                }
+            }
+            peoples = alivePeoples;
         }
     }
 }

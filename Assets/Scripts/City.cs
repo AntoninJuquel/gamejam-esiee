@@ -19,11 +19,13 @@ public class City : MonoBehaviour
     HashSet<People> peoples = new HashSet<People>();
     double tripTimer = 0;
     double batteryCount;
-    int deadCount;
-    int unhappyCount;
+    int deathCount;
+    int unhappinessCount;
 
     public bool isPause = false;
     private bool playingAlert = false;
+    public int PeopleCount => peoples.Count;
+    public bool HasPeople => peoples.Count > 0;
 
     //Les getters
     public double getBattery()
@@ -38,7 +40,7 @@ public class City : MonoBehaviour
 
     public int getNbDead()
     {
-        return this.deadCount;
+        return this.deathCount;
     }
 
     public double getChrono()
@@ -48,29 +50,11 @@ public class City : MonoBehaviour
 
     public int getNbLeave()
     {
-        return this.unhappyCount;
-    }
-
-    //M�thode qui ajoute des morts 
-    public void addDead(int d)
-    {
-        this.deadCount += d;
-    }
-
-    //M�thode qui ajoute des personnes qui partent
-    public void addUnhappy(int l)
-    {
-        this.unhappyCount += l;
-    }
-
-    //Fonction qui retourne le nb d'habitant en sommant le nb d'habitant dans chaque b�timent
-    public int getNbPeople()
-    {
-        return peoples.Count;
+        return this.unhappinessCount;
     }
 
     //Fonction qui retourne la consommation total des b�timents
-    public double getCityConsumption()
+    public double GetCityConsumption()
     {
         double somme = 0;
         foreach (var b in buildings)
@@ -80,8 +64,6 @@ public class City : MonoBehaviour
         return somme;
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         AudioManager.Instance.Stop("alert");
@@ -89,9 +71,14 @@ public class City : MonoBehaviour
         startingBatteryRef.Value = startingBatteryLevel;
         batteryLevelRef.Value = startingBatteryLevel;
         batteryPercentRef.Value = batteryLevelRef / startingBatteryLevel;
-        isPause = false;
         playingAlert = false;
         buildings = FindObjectsOfType<Building>().ToList();
+        peoples = peoplesInspector.ToHashSet();
+        
+        foreach (var p in peoples)
+        {
+            p.Start();
+        }
     }
 
     void win()
@@ -112,44 +99,48 @@ public class City : MonoBehaviour
     {
         foreach (var b in buildings)
         {
-            b.setIsConsumming(false);
+            b.IsConsumming = false;
         }
     }
 
-    void updateAllPeople()
+    void updateAllPeoples()
     {
-        HashSet<People> peopleToRemove = new HashSet<People>();
+        foreach (var b in buildings)
+        {
+            b.UpdateRates(Time.deltaTime);
+        }
+
+        var alivePeoples = new HashSet<People>();
         foreach (var p in peoples)
         {
-            b.unhappyCount += Time.deltaTime * b.getUnhappyRate();
-            int unhappyPeople = (int)Math.Floor(b.unhappyCount);
-            b.unhappyCount -= unhappyPeople;
-            leaveRef.Value += unhappyPeople;
-
-            b.mortalityCount += Time.deltaTime * b.getMortalityRate();
-            int mortalityPeople = (int)Math.Floor(b.mortalityCount);
-            b.mortalityCount -= mortalityPeople;
-            deathRef.Value += mortalityPeople;
-
-            b.subPeople(unhappyPeople + mortalityPeople);
+            p.UpdateTrips(tripTimer);
+            if (p.IsDead)
+            {
+                Debug.Log(p);
+                deathCount++;
+            }
+            else if (p.IsUnhappy)
+            {
+                Debug.Log(p);
+                unhappinessCount++;
+            }
+            else
+            {
+                alivePeoples.Add(p);
+            }
         }
-        foreach (var p in peopleToRemove)
-        {
-            peoples.Remove(p);
-        }
-        totalPeopleRef.Value = getNbPeople();
+        peoples = alivePeoples;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isPause)
         {
             tripTimer += Time.deltaTime;
-            updateAllPeople();
+            updateAllPeoples();
             timer -= Time.deltaTime;
             timerRef.Value = timer;
-            batteryCount -= getCityConsumption() * Time.deltaTime;
+            batteryCount -= GetCityConsumption() * Time.deltaTime;
             batteryLevelRef.Value = batteryCount;
             batteryPercentRef.Value = batteryCount / startingBatteryLevel;
             if (batteryCount / startingBatteryLevel <= .25 && !playingAlert)
@@ -164,14 +155,12 @@ public class City : MonoBehaviour
             turnOffAllBuilding();
         }
 
-        updateAllPeople();
-
         if (timer <= 0)
         {
             win();
         }
 
-        if (getNbPeople() == 0 && timer > 0)
+        if (!HasPeople && timer > 0)
         {
             lose();
         }

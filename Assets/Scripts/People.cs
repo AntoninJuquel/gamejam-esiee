@@ -8,13 +8,21 @@ public class People
     [System.Serializable]
     class Trip
     {
-        [SerializeField] public double Timer { get; }
-        [SerializeField] public Building Destination { get; }
+        [SerializeField] double timer;
+        [SerializeField] Building destination;
+        public Building Destination => destination;
+        public double Timer => timer;
     }
 
+    public double Death { get; set; } = 0;
+    public double Unhappiness { get; set; } = 0;
+    public bool IsDead { get => Death >= 1; }
+    public bool IsUnhappy { get => Unhappiness >= 1; }
+    public bool IsAlive { get => !IsDead && !IsUnhappy; }
+
     [SerializeField] List<Trip> trips = new List<Trip>();
-    Building currentPosition;
-    int currentTripIndex;
+    [SerializeField] Building currentPosition;
+    int currentTripIndex = 0;
 
     private bool hasTripsLeft()
     {
@@ -30,6 +38,11 @@ public class People
     {
         currentPosition.RemovePeople(this);
         currentPosition = trips[currentTripIndex++].Destination;
+        currentPosition.AddPeople(this);
+    }
+
+    public void Start()
+    {
         currentPosition.AddPeople(this);
     }
 
