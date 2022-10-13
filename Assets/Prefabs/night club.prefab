@@ -65,7 +65,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -3963241562183589234, guid: 27deb342a748fd04f81840decc60660b, type: 3}
-  - {fileID: -2870021472586168505, guid: 27deb342a748fd04f81840decc60660b, type: 3}
+  - {fileID: 2100000, guid: 18293e3b9637b0b42b11d37a1e375b98, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   consumption: 0
   mortalityRate: 0
   unhappyRate: 0
-  windowIndex: 0
+  windowIndex: 1
 --- !u!114 &1298977095359318673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,13 +124,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87067290630857302}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineColor: {r: 0, g: 0.26666668, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []

@@ -3278,6 +3278,26 @@ MonoBehaviour:
     loop: 1
     sources: []
     index: 0
+  - name: cinema
+    clips:
+    - {fileID: 8300000, guid: 660fc7ab5f75aa347bd49741e7a9caea, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
+  - name: night club
+    clips:
+    - {fileID: 8300000, guid: 70359e7f5e56cc643a6fd3af80c9a7a7, type: 3}
+    outputAudioMixerGroup: {fileID: 0}
+    volume: 1
+    spatialBlend: 0
+    pitch: 1
+    loop: 1
+    sources: []
+    index: 0
 --- !u!1 &1904426212
 GameObject:
   m_ObjectHideFlags: 0
