@@ -1973,7 +1973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b622e69c3db8eb4cacb28987730bc9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventManager: {fileID: 0}
+  eventManager: {fileID: 362103468}
   timer: 35
   startingBatteryLevel: 50
   batteryLevelRef:
@@ -2053,10 +2053,6 @@ MonoBehaviour:
     gameEvent: {fileID: 667806131}
   - time: 27
     gameEvent: {fileID: 667806130}
-  - time: 55
-    gameEvent: {fileID: 667806129}
-  - time: 55
-    gameEvent: {fileID: 667806127}
 --- !u!1001 &396899017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2824,7 +2820,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 667806145}
-  - component: {fileID: 667806144}
   - component: {fileID: 667806140}
   - component: {fileID: 667806146}
   - component: {fileID: 667806142}
@@ -2839,9 +2834,6 @@ GameObject:
   - component: {fileID: 667806132}
   - component: {fileID: 667806131}
   - component: {fileID: 667806130}
-  - component: {fileID: 667806129}
-  - component: {fileID: 667806128}
-  - component: {fileID: 667806127}
   m_Layer: 0
   m_Name: level2
   m_TagString: Untagged
@@ -2849,51 +2841,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &667806127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667806126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingA: {fileID: 0}
-  buildingB: {fileID: 0}
-  peopleToTransfer: 4
---- !u!114 &667806128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667806126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingA: {fileID: 0}
-  buildingB: {fileID: 0}
-  peopleToTransfer: 4
---- !u!114 &667806129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667806126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingA: {fileID: 0}
-  buildingB: {fileID: 0}
-  peopleToTransfer: 4
 --- !u!114 &667806130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3089,42 +3036,6 @@ MonoBehaviour:
   buildingA: {fileID: 1109654522}
   buildingB: {fileID: 1112451817}
   peopleToTransfer: 3
---- !u!114 &667806144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 667806126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b622e69c3db8eb4cacb28987730bc9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventManager: {fileID: 0}
-  timer: 60
-  startingBatteryLevel: 900
-  batteryLevelRef:
-    useConstant: 0
-    constantValue: 0
-    Variable: {fileID: 11400000, guid: 745931f1509a4fa4bb762219f501a3f2, type: 2}
-  startingBatteryRef:
-    useConstant: 0
-    constantValue: 0
-    Variable: {fileID: 11400000, guid: 4391e57d56e3a4f4485417cafabb6e48, type: 2}
-  timerRef:
-    useConstant: 0
-    constantValue: 0
-    Variable: {fileID: 11400000, guid: d02186811c14b22478fe7abe69d791b4, type: 2}
-  batteryPercentRef:
-    useConstant: 0
-    constantValue: 0
-    Variable: {fileID: 11400000, guid: da72b3fc47b7e42428fb040400de8b0a, type: 2}
-  totalPeopleRef:
-    useConstant: 0
-    constantValue: 0
-    Variable: {fileID: 11400000, guid: 6e145a7f910da714a803ec2a5abe3e25, type: 2}
-  isPause: 0
 --- !u!4 &667806145
 Transform:
   m_ObjectHideFlags: 0
