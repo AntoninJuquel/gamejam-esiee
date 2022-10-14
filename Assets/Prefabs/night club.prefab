@@ -125,10 +125,10 @@ MonoBehaviour:
   deathParticles: {fileID: 0}
   windowIndex: 1
   <Population>k__BackingField: 0
-  <PowerConsumption>k__BackingField: 0
-  fleeTime: 0
-  fleeRate: 0
-  fleeNumber: 0
+  <PowerConsumption>k__BackingField: 5
+  fleeTime: 2
+  fleeRate: 1
+  fleeNumber: 1
   deathRate: 0
   deathNumber: 0
 --- !u!114 &1298977095359318673
