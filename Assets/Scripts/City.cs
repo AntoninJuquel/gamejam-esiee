@@ -59,6 +59,10 @@ public class City : MonoBehaviour
         AudioManager.Instance.Stop("alert");
         isPause = true;
         isGameWin?.Invoke(true);
+        foreach (var b in buildings)
+        {
+            b.GetComponent<Outline>().enabled = false;
+        }
     }
 
     void lose()
@@ -66,6 +70,10 @@ public class City : MonoBehaviour
         AudioManager.Instance.Stop("alert");
         isPause = true;
         isGameWin?.Invoke(false);
+        foreach (var b in buildings)
+        {
+            b.GetComponent<Outline>().enabled = false;
+        }
     }
 
     void turnOffAllBuilding()
