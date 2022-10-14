@@ -128,8 +128,8 @@ MonoBehaviour:
   windowIndex: 0
   <Population>k__BackingField: 5
   <PowerConsumption>k__BackingField: 2
-  fleeTime: 10
-  fleeRate: 0.33
+  fleeTime: 5
+  fleeRate: 0.5
   fleeNumber: 1
   deathRate: 0
   deathNumber: 0
