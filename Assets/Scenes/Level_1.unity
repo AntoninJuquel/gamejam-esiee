@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -33309,7 +33309,7 @@ PrefabInstance:
     - target: {fileID: 6003684364285313094, guid: da30e8e49da162f48a60fd8ba2ab2f8a,
         type: 3}
       propertyPath: <Population>k__BackingField
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da30e8e49da162f48a60fd8ba2ab2f8a, type: 3}
@@ -34534,7 +34534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingA: {fileID: 597512823}
   buildingB: {fileID: 1896376366}
-  peopleToTransfer: 1
+  peopleToTransfer: 5
 --- !u!114 &1814306375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34549,7 +34549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingA: {fileID: 1896376366}
   buildingB: {fileID: 251851979}
-  peopleToTransfer: 1
+  peopleToTransfer: 5
 --- !u!114 &1814306376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34564,7 +34564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingA: {fileID: 251851979}
   buildingB: {fileID: 597512823}
-  peopleToTransfer: 1
+  peopleToTransfer: 5
 --- !u!1001 &1822956658
 PrefabInstance:
   m_ObjectHideFlags: 0
