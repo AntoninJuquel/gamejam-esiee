@@ -18781,7 +18781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventManager: {fileID: 279118508}
-  timer: 30
+  timer: 60
   startingBatteryLevel: 1400
   batteryLevelRef:
     useConstant: 0
