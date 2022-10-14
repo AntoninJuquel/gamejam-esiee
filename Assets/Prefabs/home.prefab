@@ -482,10 +482,10 @@ MonoBehaviour:
   deathParticles: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
     type: 3}
   windowIndex: 3
-  <Population>k__BackingField: 0
+  <Population>k__BackingField: 1
   <PowerConsumption>k__BackingField: 1
-  fleeTime: 10
-  fleeRate: 1
+  fleeTime: 5
+  fleeRate: 0.33
   fleeNumber: 1
   deathRate: 0
   deathNumber: 0

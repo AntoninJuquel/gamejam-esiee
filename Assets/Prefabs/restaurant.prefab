@@ -288,10 +288,10 @@ MonoBehaviour:
     type: 3}
   windowIndex: 3
   <Population>k__BackingField: 0
-  <PowerConsumption>k__BackingField: 2
+  <PowerConsumption>k__BackingField: 3
   fleeTime: 3
   fleeRate: 1
-  fleeNumber: 5
+  fleeNumber: 3
   deathRate: 0
   deathNumber: 0
 --- !u!65 &2411085000113227245
