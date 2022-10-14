@@ -125,11 +125,11 @@ MonoBehaviour:
   spawnPoint: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 0}
   windowIndex: 0
-  <Population>k__BackingField: 0
-  <PowerConsumption>k__BackingField: 0
-  fleeTime: 0
-  fleeRate: 0
-  fleeNumber: 0
+  <Population>k__BackingField: 5
+  <PowerConsumption>k__BackingField: 2
+  fleeTime: 10
+  fleeRate: 0.33
+  fleeNumber: 1
   deathRate: 0
   deathNumber: 0
 --- !u!114 &3204513986879650460
