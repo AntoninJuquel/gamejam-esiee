@@ -48,7 +48,7 @@ public class BuildingSelector : MonoBehaviour
         consumptionRef.Value = building.PowerConsumption;
         peopleRef.Value = peopleCount;
         consumingRef.Value = isConsuming;
-        buildingNameRef.Value = building.name;
+        buildingNameRef.Value = building.Name;
         OnUpdate(peopleCount, isConsuming);
     }
 
@@ -69,7 +69,7 @@ public class BuildingSelector : MonoBehaviour
 
         if (consuming)
         {
-            newSound = ppl == 0 ? "empty" : _currentBuilding.name;
+            newSound = ppl == 0 ? "empty" : _currentBuilding.Name;
         }
         else if (ppl > 0)
         {

@@ -8,6 +8,7 @@ public class Building : MonoBehaviour
     public event Action<int, bool> OnUpdate;
 
     [SerializeField] private Reference<int> deathCountRef, fleeCountRef;
+    [field: SerializeField] public string Name { get; private set; }
 
     [SerializeField] private Vector3 spawnPoint;
     [SerializeField] private GameObject deathParticles;

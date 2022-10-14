@@ -138,6 +138,7 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     Variable: {fileID: 11400000, guid: 32910d1510031a7438699da986ca3e1e, type: 2}
+  <Name>k__BackingField: cinema
   spawnPoint: {x: 0, y: 0, z: 0}
   deathParticles: {fileID: 0}
   windowIndex: 1
