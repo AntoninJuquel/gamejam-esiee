@@ -101,6 +101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484d63a4226b014428c2d8656c38a055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCountRef:
+    useConstant: 0
+    constantValue: 0
+    Variable: {fileID: 11400000, guid: 2d8e72bdd844448438161f0d0eef0d20, type: 2}
+  fleeCountRef:
+    useConstant: 0
+    constantValue: 0
+    Variable: {fileID: 11400000, guid: 32910d1510031a7438699da986ca3e1e, type: 2}
   spawnPoint: {x: 0, y: 4.5, z: 0}
   deathParticles: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
     type: 3}
@@ -111,6 +119,7 @@ MonoBehaviour:
   fleeRate: 0.5
   fleeNumber: 10
   deathRate: 0
+  deathNumber: 0
 --- !u!114 &8830866305658330484
 MonoBehaviour:
   m_ObjectHideFlags: 0
