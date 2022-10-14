@@ -11,7 +11,7 @@ public class Building : MonoBehaviour
     [field: SerializeField] public string Name { get; private set; }
 
     [SerializeField] private Vector3 spawnPoint;
-    [SerializeField] private GameObject deathParticles;
+    [SerializeField] private GameObject deathParticles, fleeParticles;
 
     [SerializeField] private int windowIndex;
     private MeshRenderer _meshRenderer;
@@ -122,6 +122,7 @@ public class Building : MonoBehaviour
             {
                 _fleeTimer = 0;
                 RemovePopulation(fleeNumber, Reason.Flee);
+                Instantiate(fleeParticles, spawnPoint + transform.position, Quaternion.identity);
             }
         }
         else
