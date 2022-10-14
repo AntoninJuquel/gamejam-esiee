@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOverlay: 1
-  firstSelected: {fileID: 1148443196}
+  firstSelected: {fileID: 0}
 --- !u!1 &565502664
 GameObject:
   m_ObjectHideFlags: 0
