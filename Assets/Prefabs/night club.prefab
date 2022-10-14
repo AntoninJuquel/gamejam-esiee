@@ -121,8 +121,11 @@ MonoBehaviour:
     constantValue: 0
     Variable: {fileID: 11400000, guid: 32910d1510031a7438699da986ca3e1e, type: 2}
   <Name>k__BackingField: night club
-  spawnPoint: {x: 0, y: 0, z: 0}
-  deathParticles: {fileID: 0}
+  spawnPoint: {x: 0, y: 1.5, z: 0}
+  deathParticles: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
+    type: 3}
+  fleeParticles: {fileID: 5954389725337754740, guid: 4deb5598e00e34a4a824c0d75d232e16,
+    type: 3}
   windowIndex: 1
   <Population>k__BackingField: 0
   <PowerConsumption>k__BackingField: 5

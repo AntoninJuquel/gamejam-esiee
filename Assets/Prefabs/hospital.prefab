@@ -199,6 +199,8 @@ MonoBehaviour:
   spawnPoint: {x: 0, y: 2, z: 0}
   deathParticles: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
     type: 3}
+  fleeParticles: {fileID: 5954389725337754740, guid: 4deb5598e00e34a4a824c0d75d232e16,
+    type: 3}
   windowIndex: 2
   <Population>k__BackingField: 0
   <PowerConsumption>k__BackingField: 7
