@@ -4547,7 +4547,7 @@ MonoBehaviour:
   - 45
   - 25
   - 30
-  - 1
+  - 25
   _buildingSelector: {fileID: 1966250640}
   _navigator: {fileID: 1184602167}
   exotronLogo: {fileID: 436684704}
@@ -5889,6 +5889,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a4092c32d578f2643ba71c1b6b5d9e87, type: 3}
     - {fileID: 8300000, guid: a2b00995a94ebe24c81dc0d7a985a9d7, type: 3}
     - {fileID: 8300000, guid: 639c8f58001ea2d4bb2c9157c471760e, type: 3}
+    - {fileID: 8300000, guid: 3ff98600668523d4884b06cdf86f1922, type: 3}
     outputAudioMixerGroup: {fileID: 0}
     volume: 1
     spatialBlend: 0
