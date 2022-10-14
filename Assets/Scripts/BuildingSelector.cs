@@ -27,6 +27,11 @@ public class BuildingSelector : MonoBehaviour
                 SelectBuilding(hit.transform.GetComponent<Building>());
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && _currentBuilding)
+        {
+            ToggleLight(!_currentBuilding.Powered);
+        }
     }
 
     private void SelectBuilding(Building building)

@@ -105,9 +105,15 @@ public class Building : MonoBehaviour
 
     public void HandlePopulationBehaviours()
     {
-        if (Population == 0) return;
+        if (Population == 0 || Powered)
+        {
+            _fleeAmount = 0;
+            _deathTimer = 0;
+            _fleeTimer = 0;
+            return;
+        }
 
-        _fleeAmount = Mathf.Clamp((float) (_fleeAmount + Time.deltaTime * (Powered ? -1 : 1)), 0f, (float) fleeTime);
+        _fleeAmount += Time.deltaTime;
 
         if (_fleeAmount >= fleeTime)
         {
@@ -122,8 +128,6 @@ public class Building : MonoBehaviour
         {
             _fleeTimer = 0;
         }
-
-        if (Powered) return;
 
         _deathTimer += Time.deltaTime * deathRate;
         if (!(_deathTimer >= 1)) return;
