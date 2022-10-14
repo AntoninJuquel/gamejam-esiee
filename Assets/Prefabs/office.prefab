@@ -115,10 +115,10 @@ MonoBehaviour:
     type: 3}
   windowIndex: 1
   <Population>k__BackingField: 0
-  <PowerConsumption>k__BackingField: 3
-  fleeTime: 3
-  fleeRate: 0.5
-  fleeNumber: 10
+  <PowerConsumption>k__BackingField: 5
+  fleeTime: 4
+  fleeRate: 1.5
+  fleeNumber: 1
   deathRate: 0
   deathNumber: 0
 --- !u!114 &8830866305658330484
