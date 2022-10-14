@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ReferenceSharing;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,7 +14,7 @@ public class City : MonoBehaviour
     [SerializeField] double startingBatteryLevel;
     List<Building> buildings = new List<Building>();
     [SerializeField] Reference<double> batteryLevelRef, startingBatteryRef, timerRef, batteryPercentRef;
-    [SerializeField] private Reference<int> totalPeopleRef, deathRef, leaveRef;
+    [SerializeField] private Reference<int> totalPeopleRef;
 
     double eventTimer = 0;
     double batteryCount;
@@ -23,97 +24,20 @@ public class City : MonoBehaviour
     public bool isPause = false;
     private bool playingAlert = false;
 
-    //Les getters
-    public double getBattery()
-    {
-        return this.batteryCount;
-    }
-
-    public List<Building> getBuilding()
-    {
-        return this.buildings;
-    }
-
-    public int getNbDead()
-    {
-        return this.nbDead;
-    }
-
-    public double getChrono()
-    {
-        return this.timer;
-    }
-
-    public int getNbLeave()
-    {
-        return this.nbLeave;
-    }
-
-    //Les setters
-    public void setBattery(double b)
-    {
-        this.batteryCount = b;
-    }
-
-    public void setBuilding(List<Building> b)
-    {
-        this.buildings = b;
-    }
-
-    public void setNbDead(int n)
-    {
-        this.nbDead = n;
-    }
-
-    public void setChrono(double c)
-    {
-        this.timer = c;
-    }
-
-    public void setNbLeave(int n)
-    {
-        this.nbLeave = n;
-    }
-
-    //M�thode qui ajoute des morts 
-    public void addDead(int d)
-    {
-        this.nbDead += d;
-    }
-
-    //M�thode qui ajoute des personnes qui partent
-    public void addLeave(int l)
-    {
-        this.nbLeave += l;
-    }
-
-    //Fonction qui retourne le nb d'habitant en sommant le nb d'habitant dans chaque b�timent
     public int getNbPeople()
     {
         int somme = 0;
         for (int i = 0; i < this.buildings.Count; i++)
         {
-            somme += this.buildings[i].getPeopleCount();
+            somme += this.buildings[i].Population;
         }
 
         totalPeopleRef.Value = somme;
         return somme;
     }
 
-    //Fonction qui retourne la consommation total des b�timents
-    public double getCityConsumption()
-    {
-        double somme = 0;
-        for (int i = 0; i < this.buildings.Count; i++)
-        {
-            somme += this.buildings[i].getActiveConsumption();
-        }
+    private double GetCityConsumption() => buildings.Sum(b => b.CurrentConsumption);
 
-        return somme;
-    }
-
-
-    // Start is called before the first frame update
     void Start()
     {
         AudioManager.Instance.Stop("alert");
@@ -148,29 +72,10 @@ public class City : MonoBehaviour
     {
         foreach (var b in buildings)
         {
-            b.setIsConsumming(false);
+            b.SetPower(false);
         }
     }
 
-    void updateAllPeopleCount()
-    {
-        foreach (var b in buildings)
-        {
-            b.unhappyCount += Time.deltaTime * b.getUnhappyRate();
-            int unhappyPeople = (int)Math.Floor(b.unhappyCount);
-            b.unhappyCount -= unhappyPeople;
-            leaveRef.Value += unhappyPeople;
-
-            b.mortalityCount += Time.deltaTime * b.getMortalityRate();
-            int mortalityPeople = (int)Math.Floor(b.mortalityCount);
-            b.mortalityCount -= mortalityPeople;
-            deathRef.Value += mortalityPeople;
-
-            b.subPeople(unhappyPeople + mortalityPeople);
-        }
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (!isPause)
@@ -179,13 +84,18 @@ public class City : MonoBehaviour
             eventManager.UpdateEventList(eventTimer);
             timer -= Time.deltaTime;
             timerRef.Value = timer;
-            batteryCount -= getCityConsumption() * Time.deltaTime;
+            batteryCount -= GetCityConsumption() * Time.deltaTime;
             batteryLevelRef.Value = batteryCount;
-            batteryPercentRef.Value = batteryCount / startingBatteryLevel;
+            batteryPercentRef.Value = batteryCount / startingBatteryLevel * 100f;
             if (batteryCount / startingBatteryLevel <= .25 && !playingAlert)
             {
                 playingAlert = true;
                 AudioManager.Instance.Play("alert");
+            }
+
+            foreach (var b in buildings)
+            {
+                b.HandlePopulationBehaviours();
             }
         }
 
@@ -193,8 +103,6 @@ public class City : MonoBehaviour
         {
             turnOffAllBuilding();
         }
-
-        updateAllPeopleCount();
 
         if (timer <= 0)
         {

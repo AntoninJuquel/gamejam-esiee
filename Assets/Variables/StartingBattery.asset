@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54100a78a3cb1a9409fda21265ebcf78, type: 3}
   m_Name: StartingBattery
   m_EditorClassIdentifier: 
+  _value: 0

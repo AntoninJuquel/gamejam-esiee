@@ -1,108 +1,99 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using ReferenceSharing;
 using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    [SerializeField] int peopleCount;
-    [SerializeField] double consumption;
-    [SerializeField] double mortalityRate;
-    [SerializeField] double unhappyRate;
-    [SerializeField] private GameObject[] windows;
     public event Action<int, bool> OnUpdate;
-    public double mortalityCount { get; set; } = 0;
-    public double unhappyCount { get; set; } = 0;
+
+    [SerializeField] private Reference<int> deathCountRef, fleeCountRef;
+
+    [SerializeField] private Vector3 spawnPoint;
+    [SerializeField] private GameObject deathParticles;
 
     [SerializeField] private int windowIndex;
-
-    bool isConsumming;
     private MeshRenderer _meshRenderer;
     private Material _windowMat;
 
-    //Les getters
-    public double getActiveConsumption()
+    [field: SerializeField] public int Population { get; private set; }
+    [field: SerializeField] public double PowerConsumption { get; private set; }
+
+    private double _fleeAmount, _fleeTimer;
+    [SerializeField] private double fleeTime, fleeRate;
+    [SerializeField] private int fleeNumber;
+
+    private double _deathTimer;
+    [SerializeField] private double deathRate;
+    [SerializeField] private int deathNumber;
+
+    public bool Powered { get; private set; }
+    public double CurrentConsumption => Powered ? PowerConsumption : 0;
+
+    public enum Reason
     {
-        return (isConsumming) ? this.consumption : 0;
+        Event,
+        Flee,
+        Death
     }
 
-    public double getConsumption()
+    public bool TogglePower()
     {
-        return this.consumption;
+        SetPower(!Powered);
+        return Powered;
     }
 
-    public bool getIsConsumming()
+    public void SetPower(bool value)
     {
-        return this.isConsumming;
-    }
-
-    public int getPeopleCount()
-    {
-        return this.peopleCount;
-    }
-
-    public double getMortalityRate()
-    {
-        return (isConsumming || peopleCount <= 0) ? 0 : mortalityRate;
-    }
-
-    public double getUnhappyRate()
-    {
-        return (isConsumming || peopleCount <= 0) ? 0 : unhappyRate;
-    }
-
-    //Les setters
-    public void setConso(double c)
-    {
-        this.consumption = c;
-    }
-
-    public void setIsConsumming(bool a)
-    {
-        this.isConsumming = a;
-
-        if (a)
+        Powered = value;
+        if (Powered)
             _windowMat.EnableKeyword("_EMISSION");
         else
             _windowMat.DisableKeyword("_EMISSION");
-        foreach (var window in windows)
+        OnUpdate?.Invoke(Population, Powered);
+    }
+
+    public void AddPopulation(int amount)
+    {
+        Population += amount;
+        OnUpdate?.Invoke(Population, Powered);
+    }
+
+    public void RemovePopulation(int amount, Reason reason = Reason.Event)
+    {
+        var toRemove = Population > amount ? amount : Population;
+        Population -= toRemove;
+        switch (reason)
         {
-            window.SetActive(a);
+            case Reason.Flee:
+                fleeCountRef.Value += toRemove;
+                break;
+            case Reason.Death:
+                deathCountRef.Value += toRemove;
+                break;
+            case Reason.Event:
+            default:
+                break;
         }
-        OnUpdate?.Invoke(peopleCount, isConsumming);
-    }
 
-    public void setNbHab(int p)
-    {
-        this.peopleCount = p;
-    }
-
-    public void setMortalityRate(double m)
-    {
-        this.mortalityRate = m;
-    }
-
-    public void setUnhappyRate(double u)
-    {
-        this.unhappyRate = u;
-    }
-
-    //M�thode qui ajoute des personnes
-    public void addPeople(int h)
-    {
-        this.peopleCount += h;
-        OnUpdate?.Invoke(peopleCount, isConsumming);
-    }
-
-    //M�thode qui retire des personnes
-    public void subPeople(int h)
-    {
-        peopleCount -= (peopleCount > h) ? h : peopleCount;
-        OnUpdate?.Invoke(peopleCount, isConsumming);
+        OnUpdate?.Invoke(Population, Powered);
     }
 
     private void Awake()
+    {
+        InitializeWindowsMaterial();
+    }
+
+    private void Start()
+    {
+        _fleeAmount = 0;
+        _fleeTimer = 0;
+        _deathTimer = 0;
+        fleeCountRef.Value = 0;
+        deathCountRef.Value = 0;
+    }
+
+    private void InitializeWindowsMaterial()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _windowMat = Instantiate(Resources.Load<Material>("window"));
@@ -111,10 +102,37 @@ public class Building : MonoBehaviour
         _meshRenderer.materials = materials.ToArray();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void HandlePopulationBehaviours()
     {
-        mortalityCount = 0;
-        unhappyCount = 0;
+        if (Population == 0) return;
+
+        _fleeAmount = Mathf.Clamp((float) (_fleeAmount + Time.deltaTime * (Powered ? -1 : 1)), 0f, (float) fleeTime);
+
+        if (_fleeAmount >= fleeTime)
+        {
+            _fleeTimer += Time.deltaTime * fleeRate;
+            if (_fleeTimer >= 1)
+            {
+                _fleeTimer = 0;
+                RemovePopulation(fleeNumber, Reason.Flee);
+            }
+        }
+        else
+        {
+            _fleeTimer = 0;
+        }
+
+        if (Powered) return;
+
+        _deathTimer += Time.deltaTime * deathRate;
+        if (!(_deathTimer >= 1)) return;
+        _deathTimer = 0;
+        RemovePopulation(deathNumber, Reason.Death);
+        Instantiate(deathParticles, spawnPoint + transform.position, Quaternion.identity);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(spawnPoint + transform.position, .1f);
     }
 }

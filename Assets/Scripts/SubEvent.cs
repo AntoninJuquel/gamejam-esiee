@@ -10,8 +10,8 @@ public class SubEvent : MonoBehaviour, IGameEvent
 
     public void action()
     {
-        var buildingPeopleCount = building.getPeopleCount();
+        var buildingPeopleCount = building.Population;
         var removingPeople = (nbPeopleToSub > buildingPeopleCount) ? buildingPeopleCount : nbPeopleToSub;
-        this.building.subPeople(removingPeople);
+        this.building.RemovePopulation(removingPeople);
     }
 }

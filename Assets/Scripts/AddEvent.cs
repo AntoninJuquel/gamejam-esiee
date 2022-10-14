@@ -9,6 +9,6 @@ public class AddEvent : MonoBehaviour, IGameEvent
 
     public void action()
     {
-        this.building.addPeople(this.nbPeopleToAdd);
+        building.AddPopulation(nbPeopleToAdd);
     }
 }

@@ -38,7 +38,7 @@ public class LevelSelector : MonoBehaviour
         {
             _currentCity = FindObjectOfType<City>();
             _currentCity.isGameWin += OnGameWin;
-            Invoke(nameof(PauseGameBeforeDialog), 1f);
+            Invoke(nameof(PauseGameBeforeDialog), .1f);
             Invoke(nameof(UnPauseAfterDialog), pauseTimers[_currentLevelIndex - 1]);
         }
     }
