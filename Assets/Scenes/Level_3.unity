@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1895,8 +1895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventManager: {fileID: 362103468}
-  timer: 40
-  startingBatteryLevel: 9000
+  timer: 70
+  startingBatteryLevel: 1150
   batteryLevelRef:
     useConstant: 0
     constantValue: 0
@@ -1970,14 +1970,30 @@ MonoBehaviour:
     gameEvent: {fileID: 667806135}
   - time: 20
     gameEvent: {fileID: 667806134}
-  - time: 25
-    gameEvent: {fileID: 667806133}
-  - time: 26
-    gameEvent: {fileID: 667806132}
-  - time: 26
-    gameEvent: {fileID: 667806131}
-  - time: 27
-    gameEvent: {fileID: 667806130}
+  - time: 30
+    gameEvent: {fileID: 667806134}
+  - time: 30
+    gameEvent: {fileID: 667806141}
+  - time: 30
+    gameEvent: {fileID: 667806149}
+  - time: 30
+    gameEvent: {fileID: 667806150}
+  - time: 30
+    gameEvent: {fileID: 667806151}
+  - time: 30
+    gameEvent: {fileID: 667806152}
+  - time: 45
+    gameEvent: {fileID: 667806153}
+  - time: 50
+    gameEvent: {fileID: 667806154}
+  - time: 50
+    gameEvent: {fileID: 667806155}
+  - time: 50
+    gameEvent: {fileID: 667806156}
+  - time: 60
+    gameEvent: {fileID: 667806139}
+  - time: 60
+    gameEvent: {fileID: 667806138}
 --- !u!1001 &396899017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2748,7 +2764,6 @@ GameObject:
   - component: {fileID: 667806140}
   - component: {fileID: 667806146}
   - component: {fileID: 667806142}
-  - component: {fileID: 667806141}
   - component: {fileID: 667806139}
   - component: {fileID: 667806138}
   - component: {fileID: 667806147}
@@ -2756,11 +2771,20 @@ GameObject:
   - component: {fileID: 667806137}
   - component: {fileID: 667806136}
   - component: {fileID: 667806135}
-  - component: {fileID: 667806134}
   - component: {fileID: 667806133}
   - component: {fileID: 667806132}
   - component: {fileID: 667806131}
   - component: {fileID: 667806130}
+  - component: {fileID: 667806134}
+  - component: {fileID: 667806141}
+  - component: {fileID: 667806149}
+  - component: {fileID: 667806150}
+  - component: {fileID: 667806151}
+  - component: {fileID: 667806152}
+  - component: {fileID: 667806153}
+  - component: {fileID: 667806154}
+  - component: {fileID: 667806155}
+  - component: {fileID: 667806156}
   m_Layer: 0
   m_Name: Events
   m_TagString: Untagged
@@ -3023,6 +3047,126 @@ MonoBehaviour:
   buildingA: {fileID: 1119485731}
   buildingB: {fileID: 804064188}
   peopleToTransfer: 4
+--- !u!114 &667806149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 804064188}
+  buildingB: {fileID: 2093908545}
+  peopleToTransfer: 10
+--- !u!114 &667806150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 624808450}
+  buildingB: {fileID: 2093908545}
+  peopleToTransfer: 10
+--- !u!114 &667806151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 1112451817}
+  buildingB: {fileID: 2093908545}
+  peopleToTransfer: 10
+--- !u!114 &667806152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 72853353}
+  buildingB: {fileID: 2093908545}
+  peopleToTransfer: 10
+--- !u!114 &667806153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 2093908545}
+  buildingB: {fileID: 1112451817}
+  peopleToTransfer: 100
+--- !u!114 &667806154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 1112451817}
+  buildingB: {fileID: 829260945}
+  peopleToTransfer: 5
+--- !u!114 &667806155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 1112451817}
+  buildingB: {fileID: 1279828896}
+  peopleToTransfer: 5
+--- !u!114 &667806156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667806126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47db6b026042be24a81311a199864691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingA: {fileID: 1112451817}
+  buildingB: {fileID: 1119485731}
+  peopleToTransfer: 5
 --- !u!1001 &707189098
 PrefabInstance:
   m_ObjectHideFlags: 0
