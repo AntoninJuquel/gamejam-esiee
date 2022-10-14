@@ -113,9 +113,14 @@ public class LevelSelector : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            AudioManager.Instance.Stop("dialog");
-            UnPauseAfterDialog();
-            CancelInvoke(nameof(UnPauseAfterDialog));
+            Skip();
         }
+    }
+
+    public void Skip()
+    {
+        AudioManager.Instance.Stop("dialog");
+        UnPauseAfterDialog();
+        CancelInvoke(nameof(UnPauseAfterDialog));
     }
 }
