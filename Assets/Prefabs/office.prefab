@@ -109,6 +109,7 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     Variable: {fileID: 11400000, guid: 32910d1510031a7438699da986ca3e1e, type: 2}
+  <Name>k__BackingField: office
   spawnPoint: {x: 0, y: 4.5, z: 0}
   deathParticles: {fileID: 5985634496115995773, guid: 463cf9f7af4680240898f6aeba3fe3e6,
     type: 3}
